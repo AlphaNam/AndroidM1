@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">TennisTracker</string>
+    <string name="matchs_precedents">Matchs précédents</string>
+    <string name="version_pro">Version PRO</string>
+    <string name="nouveau_match">Nouveau match</string>
+
+    <string-array name="formats_match">
+        <item>"2 sets, 6 jeux, Avantage, TB 6\-6"</item>
+        <item>"2 sets, 5 jeux, Avantage, TB 5\-5"</item>
+        <item>"2 sets, 4 jeux, Avantage, TB 4\-4"</item>
+        <item>"2 sets, 5 jeux, Pas d'avantage, TB 4\-4"</item>
+        <item>"2 sets, 4 jeux, Pas d'avantage, TB 3\-3"</item>
+        <item>"2 sets, 3 jeux, Pas d'avantage, TB 2\-2"</item>
+    </string-array>
+
+    <string-array name="format_dernier_set">
+        <item>Set normal</item>
+        <item>Tie-break en 7 points</item>
+        <item>Super Tie-break en 10 points</item>
+    </string-array>
+
+    <string-array name="type_coup">
+        <item>Ne pas saisir</item>
+    </string-array>
+    <string name="title_activity_match">MatchActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="score">SCORE</string>
+    <string name="joueur_1">JOUEUR 1</string>
+    <string name="no_score">-</string>
+    <string name="joueur_2">JOUEUR 2</string>
+    <string name="premiere_balle">1ère balle</string>
+    <string name="deuxieme_balle">2ème balle</string>
+    <string name="double_faute">Double faute</string>
+    <string name="ace">Ace</string>
+    <string name="echange">ECHANGE</string>
+    <string name="point_gagnant">Point gagnant</string>
+    <string name="faute_directe">Faute directe</string>
+    <string name="faute_provo">Faute provo.</string>
+    <string name="two">2</string>
+    <string name="one">1</string>
+
+</resources>

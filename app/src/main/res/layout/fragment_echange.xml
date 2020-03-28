@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentEchange"
+    android:weightSum="3"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout_title_service"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <!--android:background="@drawable/borderGreen"-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_echange"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/echange"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/button_cancel_last_point"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|end"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:drawableEnd="@drawable/ic_close_black_24dp"
+            android:drawableRight="@drawable/ic_close_black_24dp"
+            android:gravity="start|end" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/row1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical">
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:clickable="false"
+                android:text="@string/one" />
+
+            <Button
+                android:id="@+id/button_point_gagnant_j1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/button1"
+                android:background="@drawable/border_green"
+                android:text="@string/point_gagnant"
+                android:textAllCaps="false"
+                android:textColor="#4CAF50"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"/>
+
+            <Button
+                android:id="@+id/button_faute_directe_j1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/button_faute_provoq_j1"
+                android:layout_toRightOf="@id/button_point_gagnant_j1"
+                android:background="@drawable/border_orange"
+                android:text="@string/faute_directe"
+                android:textAllCaps="false"
+                android:textColor="#FF9800"
+                android:layout_marginRight="10dp"/>
+
+            <Button
+                android:id="@+id/button_faute_provoq_j1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/border_red"
+                android:text="@string/faute_provo"
+                android:textAllCaps="false"
+                android:textColor="#E91E63"
+                android:layout_marginRight="10dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical">
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:clickable="false"
+                android:text="@string/two" />
+
+            <Button
+                android:id="@+id/button_point_gagnant_j2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/button2"
+                android:background="@drawable/border_green"
+                android:text="@string/point_gagnant"
+                android:textAllCaps="false"
+                android:textColor="#4CAF50"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"/>
+
+            <Button
+                android:id="@+id/button_faute_directe_j2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/button_faute_provoq_j2"
+                android:layout_toRightOf="@id/button_point_gagnant_j2"
+                android:background="@drawable/border_orange"
+                android:text="@string/faute_directe"
+                android:textAllCaps="false"
+                android:textColor="#FF9800"
+                android:layout_marginRight="10dp"/>
+
+            <Button
+                android:id="@+id/button_faute_provoq_j2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/border_red"
+                android:text="@string/faute_provo"
+                android:textAllCaps="false"
+                android:textColor="#E91E63"
+                android:layout_marginRight="10dp"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
