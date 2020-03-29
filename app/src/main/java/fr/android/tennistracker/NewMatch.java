@@ -1,5 +1,6 @@
 package fr.android.tennistracker;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,23 +12,42 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 
 public class NewMatch extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    private EditText et_joueur1;
+    private EditText et_joueur2;
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.menu_demarrer:
-                Intent intent = new Intent(this, MatchActivity.class);
-                EditText et_joueur1 = (EditText) findViewById(R.id.et_joueur1);
-                EditText et_joueur2 = (EditText) findViewById(R.id.et_joueur2);
-                intent.putExtra("NOM_JOUEUR_1",et_joueur1.getText().toString());
-                intent.putExtra("NOM_JOUEUR_2",et_joueur2.getText().toString());
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                if(et_joueur1.getText().toString().isEmpty() || et_joueur2.getText().toString().isEmpty()){
+                    AlertDialog.Builder mBuilder = new AlertDialog.Builder(NewMatch.this);
+                    mBuilder.setTitle("Erreur de saisie");
+                    mBuilder.setMessage("Le nom des joueurs ne peut être vide");
+                    mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // textview.setText(listItem[i]);
+                            dialog.dismiss();
+                        }
+                    });
+                    AlertDialog mDialog = mBuilder.create();
+                    mDialog.show();
+                }
+                else {
+                    Intent intent = new Intent(this, MatchActivity.class);
+                    EditText et_joueur1 = (EditText) findViewById(R.id.et_joueur1);
+                    EditText et_joueur2 = (EditText) findViewById(R.id.et_joueur2);
+                    intent.putExtra("NOM_JOUEUR_1", et_joueur1.getText().toString());
+                    intent.putExtra("NOM_JOUEUR_2", et_joueur2.getText().toString());
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                }
                 break;
             case R.id.home:
                 finish();
@@ -94,6 +114,12 @@ public class NewMatch extends AppCompatActivity implements AdapterView.OnItemSel
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Nouveau match");
+
+        et_joueur1 = (EditText)findViewById(R.id.et_joueur1);
+        et_joueur2 = (EditText)findViewById(R.id.et_joueur2);
+
+        et_joueur1.setText("Joueur 1");
+        et_joueur2.setText("Joueur 2");
 
 
         //

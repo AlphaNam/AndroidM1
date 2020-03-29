@@ -36,9 +36,12 @@ public class FragmentScore extends Fragment {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_score, container, false);
-        tv_nom_joueur1 = view.findViewById(R.id.tv_score_nomj1);
-        tv_nom_joueur2 = view.findViewById(R.id.tv_score_nomj2);
 
+        tv_nom_joueur1 = (TextView)view.findViewById(R.id.tv_score_nomj1);
+        tv_nom_joueur2 = (TextView)view.findViewById(R.id.tv_score_nomj2);
+
+        tv_nom_joueur1.setText(getArguments().getString("NOM_JOUEUR_1"));
+        tv_nom_joueur2.setText(getArguments().getString("NOM_JOUEUR_2"));
 
 
         return view;
@@ -59,13 +62,5 @@ public class FragmentScore extends Fragment {
     public void onDetach() {
         super.onDetach();
         listener = null;
-    }
-
-    public void updateTextViewJoueur1(CharSequence newTextJoueur1){
-        tv_nom_joueur1.setText(newTextJoueur1);
-    }
-
-    public void updateTextViewJoueur2(CharSequence newTextJoueur2){
-        tv_nom_joueur2.setText(newTextJoueur2);
     }
 }

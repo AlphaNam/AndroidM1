@@ -83,25 +83,17 @@ public class MatchActivity extends AppCompatActivity {
         fragmentService = new FragmentService();
         fragmentEchange = new FragmentEchange();
 
+        Bundle bundle = new Bundle();
+        bundle.putString("NOM_JOUEUR_1",nomJoueur1);
+        bundle.putString("NOM_JOUEUR_2",nomJoueur2);
+        fragmentScore.setArguments(bundle);
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .add(R.id.score_layout, fragmentScore)
                 .add(R.id.service_layout, fragmentService)
                 .add(R.id.echange_layout, fragmentEchange)
                 .commit();
-/*
-        TextView tv_score_name_joueur1 = (TextView)findViewById(R.id.tv_score_nomj1);
-        TextView tv_score_name_joueur2 = (TextView)findViewById(R.id.tv_score_nomj2);*/
-        /*if(nomJoueur1 != null)
-            tv_score_name_joueur1.setText(nomJoueur1);
-        if(nomJoueur2 != null)
-            tv_score_name_joueur2.setText(nomJoueur2);*/
-
-        if(!nomJoueur1.isEmpty())
-            fragmentScore.updateTextViewJoueur1(nomJoueur1);
-
-        if(!nomJoueur2.isEmpty())
-            fragmentScore.updateTextViewJoueur2(nomJoueur2);
 
     }
 
