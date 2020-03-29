@@ -4,6 +4,8 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -12,12 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 
-public class MatchActivity extends AppCompatActivity implements FragmentScore.FragmentScoreListener {
+public class MatchActivity extends AppCompatActivity implements FragmentScore.FragmentScoreListener{
     private FragmentScore fragmentScore;
     private FragmentService fragmentService;
     private FragmentEchange fragmentEchange;
 
-    private TextView tv_serveur;
+    private boolean j1_sert;
 
     private static final String ACTIVITY_TITLE = "Enregistrement";
     private static final String JOUEUR_1 = "Joueur 1";
@@ -38,7 +40,6 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
 
         String nomJoueur1 = null;
         String nomJoueur2 = null;
-        tv_serveur = new TextView(this);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -101,7 +102,52 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
     }
 
     @Override
-    public void onInputASent(boolean choice) {
-        fragmentScore.setServer(choice);
+    public void onInputASent(boolean joueur1_sert) {
+        fragmentScore.init_jeu1();
+        fragmentScore.setServer(joueur1_sert);
+        j1_sert = joueur1_sert;
+    }
+
+    public void onInputService(View view){
+        Button myBtn = (Button)view;
+        switch(myBtn.getTag().toString()){
+            case "ace":
+                if(j1_sert)
+                    fragmentScore.updateScore(true);
+                else
+                    fragmentScore.updateScore(false);
+                break;
+            case "double_faute":
+                if(j1_sert)
+                    fragmentScore.updateScore(false);
+                else
+                    fragmentScore.updateScore(true);
+                break;
+            case "point_gagnant_j1":
+                fragmentScore.updateScore(true);
+                break;
+            case "point_gagnant_j2":
+                fragmentScore.updateScore(false);
+                break;
+
+            default:
+                break;
+        }
+        if (fragmentScore.finJeu()){
+            fragmentScore.resetJeu();
+            inverseService();
+        }
+
+    }
+
+    public void inverseService(){
+        if(j1_sert) {
+            j1_sert = false;
+            fragmentScore.setServer(false);
+        }
+        else {
+            j1_sert = true;
+            fragmentScore.setServer(true);
+        }
     }
 }

@@ -69,36 +69,42 @@
                 android:id="@+id/button_point_gagnant_j1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
                 android:layout_toRightOf="@id/button1"
                 android:background="@drawable/border_green"
+                android:onClick="onInputService"
+                android:tag="point_gagnant_j1"
                 android:text="@string/point_gagnant"
                 android:textAllCaps="false"
-                android:textColor="#4CAF50"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="10dp"/>
+                android:textColor="#4CAF50" />
 
             <Button
                 android:id="@+id/button_faute_directe_j1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:layout_toLeftOf="@id/button_faute_provoq_j1"
                 android:layout_toRightOf="@id/button_point_gagnant_j1"
                 android:background="@drawable/border_orange"
+                android:onClick="onInputService"
+                android:tag="faute_directe_j1"
                 android:text="@string/faute_directe"
                 android:textAllCaps="false"
-                android:textColor="#FF9800"
-                android:layout_marginRight="10dp"/>
+                android:textColor="#FF9800" />
 
             <Button
                 android:id="@+id/button_faute_provoq_j1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/border_red"
+                android:onClick="onInputService"
+                android:tag="faute_provoq_j1"
                 android:text="@string/faute_provo"
                 android:textAllCaps="false"
-                android:textColor="#E91E63"
-                android:layout_marginRight="10dp"/>
+                android:textColor="#E91E63" />
         </RelativeLayout>
     </LinearLayout>
 
@@ -126,36 +132,42 @@
                 android:id="@+id/button_point_gagnant_j2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
                 android:layout_toRightOf="@id/button2"
                 android:background="@drawable/border_green"
+                android:onClick="onInputService"
+                android:tag="point_gagnant_j2"
                 android:text="@string/point_gagnant"
                 android:textAllCaps="false"
-                android:textColor="#4CAF50"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="10dp"/>
+                android:textColor="#4CAF50" />
 
             <Button
                 android:id="@+id/button_faute_directe_j2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:layout_toLeftOf="@id/button_faute_provoq_j2"
                 android:layout_toRightOf="@id/button_point_gagnant_j2"
                 android:background="@drawable/border_orange"
+                android:onClick="onInputService"
+                android:tag="faute_directe_j1"
                 android:text="@string/faute_directe"
                 android:textAllCaps="false"
-                android:textColor="#FF9800"
-                android:layout_marginRight="10dp"/>
+                android:textColor="#FF9800" />
 
             <Button
                 android:id="@+id/button_faute_provoq_j2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/border_red"
+                android:onClick="onInputService"
+                android:tag="faute_provoq_j2"
                 android:text="@string/faute_provo"
                 android:textAllCaps="false"
-                android:textColor="#E91E63"
-                android:layout_marginRight="10dp"/>
+                android:textColor="#E91E63" />
         </RelativeLayout>
 
     </LinearLayout>

@@ -21,3 +21,5 @@
 * Hidden 3rd button on [FragmentService](app/src/main/java/fr/android/tennistracker/FragmentService.java) shoud be changed by linear layout
 
 * Do the Report with list of functions implemented/not implemented, possible improvements and with our app Architecture / Screenshots
+
+* Animate buttons in MatchActivity (Fragments)
