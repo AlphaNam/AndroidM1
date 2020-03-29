@@ -15,7 +15,7 @@
         android:layout_width="301dp"
         android:layout_height="241dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/main_image" />
+        android:src="@drawable/main_image_removebg_preview" />
 <!--android:layout_below="@id/toolbar"-->
 
 

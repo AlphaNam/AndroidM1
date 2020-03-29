@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -11,11 +12,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 
-public class MatchActivity extends AppCompatActivity {
+public class MatchActivity extends AppCompatActivity implements FragmentScore.FragmentScoreListener {
     private FragmentScore fragmentScore;
     private FragmentService fragmentService;
     private FragmentEchange fragmentEchange;
 
+    private TextView tv_serveur;
+
+    private static final String ACTIVITY_TITLE = "Enregistrement";
     private static final String JOUEUR_1 = "Joueur 1";
     private static final String JOUEUR_2 = "Joueur 2";
 
@@ -34,9 +38,10 @@ public class MatchActivity extends AppCompatActivity {
 
         String nomJoueur1 = null;
         String nomJoueur2 = null;
+        tv_serveur = new TextView(this);
+
         Bundle extras = getIntent().getExtras();
-        if(extras != null)
-        {
+        if (extras != null) {
             nomJoueur1 = extras.getString("NOM_JOUEUR_1");
             nomJoueur2 = extras.getString("NOM_JOUEUR_2");
         }
@@ -44,34 +49,29 @@ public class MatchActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setTitle("Enregistrement");
-        // ?
+        getSupportActionBar().setTitle(ACTIVITY_TITLE);
         invalidateOptionsMenu();
-        // ?
 
-
-        //final Integer choice;
-        //if((nomJoueur1 == null)
         final String[] listItems = new String[]{
-                (nomJoueur1.isEmpty())? JOUEUR_1 :nomJoueur1,
-                (nomJoueur2.isEmpty())? JOUEUR_2 :nomJoueur2
+                (nomJoueur1.isEmpty()) ? JOUEUR_1 : nomJoueur1,
+                (nomJoueur2.isEmpty()) ? JOUEUR_2 : nomJoueur2
         };
+
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(MatchActivity.this);
         mBuilder.setTitle("Premier serveur");
         mBuilder.setItems(listItems, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if(listItems[which].equals(listItems[0])){
-                    // Attacher le point jaune au fragment score
-                    //dialog.dismiss();
-                }
+                if(which == 0)
+                    onInputASent(true);
+                else
+                    onInputASent(false);
             }
         });
         mBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // textview.setText(listItem[i]);
-                //dialog.dismiss();
+                dialog.dismiss();
             }
         });
 
@@ -79,13 +79,17 @@ public class MatchActivity extends AppCompatActivity {
         AlertDialog mDialog = mBuilder.create();
         mDialog.show();
 
+        mDialog.setCanceledOnTouchOutside(false);
+        mDialog.setCancelable(false);
+
         fragmentScore = new FragmentScore();
         fragmentService = new FragmentService();
         fragmentEchange = new FragmentEchange();
 
         Bundle bundle = new Bundle();
-        bundle.putString("NOM_JOUEUR_1",nomJoueur1);
-        bundle.putString("NOM_JOUEUR_2",nomJoueur2);
+        bundle.putString("NOM_JOUEUR_1", nomJoueur1);
+        bundle.putString("NOM_JOUEUR_2", nomJoueur2);
+
         fragmentScore.setArguments(bundle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -94,7 +98,10 @@ public class MatchActivity extends AppCompatActivity {
                 .add(R.id.service_layout, fragmentService)
                 .add(R.id.echange_layout, fragmentEchange)
                 .commit();
-
     }
 
+    @Override
+    public void onInputASent(boolean choice) {
+        fragmentScore.setServer(choice);
+    }
 }

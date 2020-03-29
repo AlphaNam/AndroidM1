@@ -13,12 +13,26 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class FragmentScore extends Fragment {
-    private FragmentScoreListener listener;
+    //private FragmentScoreListener listener;
     private TextView tv_nom_joueur1;
     private TextView tv_nom_joueur2;
+    private boolean j1_sert;
+
+    public void setServer(boolean choice) {
+        if(choice){
+            tv_nom_joueur1.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_fiber_manual_record_yellow_24dp, 0);
+            tv_nom_joueur2.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_fiber_manual_record_black_24dp, 0);
+            j1_sert = true;
+        }
+        else{
+            tv_nom_joueur1.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_fiber_manual_record_black_24dp, 0);
+            tv_nom_joueur2.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_fiber_manual_record_yellow_24dp, 0);
+            j1_sert = false;
+        }
+    }
 
     public interface FragmentScoreListener{
-        void onInputASent(CharSequence input);
+        void onInputASent(boolean choice);
     }
 
     public FragmentScore() {
@@ -43,7 +57,6 @@ public class FragmentScore extends Fragment {
         tv_nom_joueur1.setText(getArguments().getString("NOM_JOUEUR_1"));
         tv_nom_joueur2.setText(getArguments().getString("NOM_JOUEUR_2"));
 
-
         return view;
     }
 
@@ -61,6 +74,6 @@ public class FragmentScore extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        listener = null;
+        //listener = null;
     }
 }
