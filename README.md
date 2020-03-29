@@ -4,8 +4,6 @@
 
 * Top Border lines for tables on [NewMatchActivity](app/src/main/java/fr/android/tennistracker/NewMatch.java)
 
-* Hidden 3rd button on [FragmentService](app/src/main/java/fr/android/tennistracker/FragmentService.java) shoud be changed by linear layout
-
 * [FragmentEchange](app/src/main/java/fr/android/tennistracker/FragmentEchange.java) should be remade with Linear layout shoud be changed by linear layout
 
 * Add padding top/bottom/left/right on [MatchActivity](app/src/main/java/fr/android/tennistracker/MatchActivity.java)
@@ -19,5 +17,7 @@
 * Use [SQLite](https://developer.android.com/training/data-storage/sqlite) to save 5 previous matches.
 
 * save full statistics on external database. Ex: MySQL Wamp
+
+* Hidden 3rd button on [FragmentService](app/src/main/java/fr/android/tennistracker/FragmentService.java) shoud be changed by linear layout
 
 * Do the Report with list of functions implemented/not implemented, possible improvements and with our app Architecture / Screenshots
