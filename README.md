@@ -2,7 +2,7 @@
 
 ## TO DO LIST
 
-* Top Border lines for tables on [NewMatchActivity] (app/src/main/java/fr/android/tennistracker/NewMatch.java)
+* Top Border lines for tables on [NewMatchActivity] (AndroidM1/app/src/main/java/fr/android/tennistracker/NewMatch.java)
 
 * Hidden 3rd button on [FragmentService] (AndroidM1/app/src/main/java/fr/android/tennistracker/FragmentService.java) shoud be changed by linear layout
 
