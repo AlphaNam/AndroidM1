@@ -4,7 +4,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +15,9 @@ public class MatchActivity extends AppCompatActivity {
     private FragmentScore fragmentScore;
     private FragmentService fragmentService;
     private FragmentEchange fragmentEchange;
+
+    private static final String JOUEUR_1 = "Joueur 1";
+    private static final String JOUEUR_2 = "Joueur 2";
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -28,6 +31,16 @@ public class MatchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match);
+
+        String nomJoueur1 = null;
+        String nomJoueur2 = null;
+        Bundle extras = getIntent().getExtras();
+        if(extras != null)
+        {
+            nomJoueur1 = extras.getString("NOM_JOUEUR_1");
+            nomJoueur2 = extras.getString("NOM_JOUEUR_2");
+        }
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -35,24 +48,33 @@ public class MatchActivity extends AppCompatActivity {
         // ?
         invalidateOptionsMenu();
         // ?
+
+
         //final Integer choice;
-        String[] listItems = new String[]{"Joueur 1", "Joueur 2"};
+        //if((nomJoueur1 == null)
+        final String[] listItems = new String[]{
+                (nomJoueur1.isEmpty())? JOUEUR_1 :nomJoueur1,
+                (nomJoueur2.isEmpty())? JOUEUR_2 :nomJoueur2
+        };
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(MatchActivity.this);
         mBuilder.setTitle("Premier serveur");
         mBuilder.setItems(listItems, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
-                dialog.dismiss();
+                if(listItems[which].equals(listItems[0])){
+                    // Attacher le point jaune au fragment score
+                    //dialog.dismiss();
+                }
             }
         });
         mBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // textview.setText(listItem[i]);
-                dialog.dismiss();
+                //dialog.dismiss();
             }
         });
+
 
         AlertDialog mDialog = mBuilder.create();
         mDialog.show();
@@ -67,6 +89,19 @@ public class MatchActivity extends AppCompatActivity {
                 .add(R.id.service_layout, fragmentService)
                 .add(R.id.echange_layout, fragmentEchange)
                 .commit();
+/*
+        TextView tv_score_name_joueur1 = (TextView)findViewById(R.id.tv_score_nomj1);
+        TextView tv_score_name_joueur2 = (TextView)findViewById(R.id.tv_score_nomj2);*/
+        /*if(nomJoueur1 != null)
+            tv_score_name_joueur1.setText(nomJoueur1);
+        if(nomJoueur2 != null)
+            tv_score_name_joueur2.setText(nomJoueur2);*/
+
+        if(!nomJoueur1.isEmpty())
+            fragmentScore.updateTextViewJoueur1(nomJoueur1);
+
+        if(!nomJoueur2.isEmpty())
+            fragmentScore.updateTextViewJoueur2(nomJoueur2);
 
     }
 

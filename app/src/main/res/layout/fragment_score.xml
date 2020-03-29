@@ -24,6 +24,7 @@
                 android:id="@+id/tv_score"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
                 android:gravity="center_vertical"
                 android:text="@string/score"
                 android:textStyle="bold" />
@@ -61,10 +62,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="4"
                 android:background="#D3D3D3"
+                android:drawableRight="@drawable/ic_fiber_manual_record_yellow_24dp"
                 android:gravity="center"
                 android:text="@string/joueur_1"
                 android:textStyle="bold"
-                />
+                android:drawableEnd="@drawable/ic_fiber_manual_record_yellow_24dp" />
 
             <TextView
                 android:id="@+id/tv_score_jeu_actuel_j1"
@@ -109,13 +111,16 @@
             android:layout_weight="1">
 
             <TextView
+                android:id="@+id/tv_score_nomj2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
                 android:background="#D3D3D3"
+                android:drawableRight="@drawable/ic_fiber_manual_record_black_24dp"
                 android:gravity="center"
                 android:text="@string/joueur_2"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:drawableEnd="@drawable/ic_fiber_manual_record_black_24dp" />
 
             <TextView
                 android:id="@+id/tv_score_jeu_actuel_j2"

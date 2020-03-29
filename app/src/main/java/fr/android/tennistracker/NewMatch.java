@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
@@ -21,10 +22,16 @@ public class NewMatch extends AppCompatActivity implements AdapterView.OnItemSel
         switch (item.getItemId()){
             case R.id.menu_demarrer:
                 Intent intent = new Intent(this, MatchActivity.class);
+                EditText et_joueur1 = (EditText) findViewById(R.id.et_joueur1);
+                EditText et_joueur2 = (EditText) findViewById(R.id.et_joueur2);
+                intent.putExtra("NOM_JOUEUR_1",et_joueur1.getText().toString());
+                intent.putExtra("NOM_JOUEUR_2",et_joueur2.getText().toString());
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
-
+            case R.id.home:
+                finish();
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -45,10 +52,6 @@ public class NewMatch extends AppCompatActivity implements AdapterView.OnItemSel
         item.setVisible(false);
         item = menu.findItem(R.id.menu_saisie_coup);
         item.setVisible(false);
-
-
-
-
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -57,14 +60,7 @@ public class NewMatch extends AppCompatActivity implements AdapterView.OnItemSel
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_match);
 
-        /*MenuItem itemTerminer = (MenuItem)findViewById(R.id.menu_terminer);
-        itemTerminer.setVisible(false);*/
-
-        //getSupportActionBar().
-        //invalidateOptionsMenu();
-
         invalidateOptionsMenu();
-
 
         Spinner spinnerFormatMatch = (Spinner) findViewById(R.id.spinner_format_match);
         ArrayAdapter<CharSequence> adapterFormatMatch = ArrayAdapter.createFromResource(this, R.array.formats_match, R.layout.support_simple_spinner_dropdown_item);
@@ -82,13 +78,7 @@ public class NewMatch extends AppCompatActivity implements AdapterView.OnItemSel
         ArrayAdapter<CharSequence> adapterTypeCoup = ArrayAdapter.createFromResource(this, R.array.type_coup, R.layout.support_simple_spinner_dropdown_item);
         adapterTypeCoup.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinnerTypeCoup.setAdapter(adapterTypeCoup);
-        /*spinnerTypeCoup.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Snackbar.make(view, "Passez à la version PRO !", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
+
         spinnerTypeCoup.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -101,15 +91,6 @@ public class NewMatch extends AppCompatActivity implements AdapterView.OnItemSel
 
             }
         });
-
-
-                /*new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Passez à la version PRO !", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Nouveau match");
