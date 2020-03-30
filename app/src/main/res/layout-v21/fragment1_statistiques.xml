@@ -3,60 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentScore"
-    android:weightSum="3"
-    android:orientation="vertical">
-
-    <LinearLayout
-        android:id="@+id/layout_title_score"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-        <!--android:background="@drawable/borderGreen"-->
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/tv_score"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/score"
-                android:textStyle="bold" />
-        </RelativeLayout>
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|end"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:drawableEnd="@drawable/ic_timeline_black_24dp"
-            android:drawableRight="@drawable/ic_timeline_black_24dp"
-            android:gravity="start|end"
-            android:onClick="launch_new_score_details_activity"
-            android:tag="btnScoreDetails" />
-
-
-    </LinearLayout>
-
+    android:orientation="vertical"
+    android:weightSum="10">
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:weightSum="2">
+        android:layout_height="0dp"
+        android:layout_weight="1.4"
+        android:weightSum="1.4">
 
         <TableRow
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            >
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7">
 
             <TextView
                 android:id="@+id/tv_score_nomj1"
@@ -76,7 +35,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/zero" />
+                android:text="@string/no_score" />
 
             <TextView
                 android:id="@+id/tv_score_jeu1_j1"
@@ -109,8 +68,9 @@
         </TableRow>
 
         <TableRow
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7">
 
             <TextView
                 android:id="@+id/tv_score_nomj2"
@@ -118,11 +78,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="4"
                 android:background="#D3D3D3"
+                android:drawableEnd="@drawable/ic_fiber_manual_record_black_24dp"
                 android:drawableRight="@drawable/ic_fiber_manual_record_black_24dp"
                 android:gravity="center"
                 android:text="@string/joueur_2"
-                android:textStyle="bold"
-                android:drawableEnd="@drawable/ic_fiber_manual_record_black_24dp" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_score_jeu_actuel_j2"
@@ -130,7 +90,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/zero" />
+                android:text="@string/no_score" />
 
             <TextView
                 android:id="@+id/tv_score_jeu1_j2"
@@ -163,5 +123,23 @@
         </TableRow>
 
     </TableLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"></LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="7.6">
+
+        <fragment
+            android:id="@+id/fragment"
+            android:name="fr.android.tennistracker.FragmentTableauScorePlusDetailles"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+    </ScrollView>
 
 </LinearLayout>

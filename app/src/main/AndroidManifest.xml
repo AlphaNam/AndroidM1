@@ -10,17 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ScoreDetailsActivity"
+            android:label="@string/title_activity_score_details"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".MatchActivity"
             android:label="@string/title_activity_match"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
-        <activity android:name=".NewMatch"
-            android:parentActivityName=".MainActivity">
-        </activity>
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".NewMatch"
+            android:parentActivityName=".MainActivity"></activity>
         <activity android:name=".MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

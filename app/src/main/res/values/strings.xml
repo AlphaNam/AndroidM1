@@ -42,4 +42,12 @@
     <string name="one">1</string>
     <string name="zero">0</string>
 
+    <string name="title_activity_score_details">ScoreDetailsActivity</string>
+    <string name="tab_title_statistiques">STATISTIQUES</string>
+    <string name="tab_title_graphiques">GRAPHIQUES</string>
+    <string name="tab_title_historique">HISTORIQUE</string>
+    <string name="statistiques_genereales">STATISTIQUES GENEREALES</string>
+    <string name="statistiques_de_service">STATISTIQUES DE SERVICE</string>
+    <string name="statistiques_de_retour">STATISTIQUES DE RETOUR</string>
+    <string name="statistiques_des_points">STATISTIQUES DES POINTS</string>
 </resources>

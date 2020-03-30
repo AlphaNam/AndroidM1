@@ -1,6 +1,7 @@
 package fr.android.tennistracker;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -148,6 +149,18 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
         else {
             j1_sert = true;
             fragmentScore.setServer(true);
+        }
+    }
+
+    public void launch_new_score_details_activity(View view) {
+        Button myButton = (Button) view;
+        switch (myButton.getTag().toString()) {
+            case "btnScoreDetails":
+                Intent i = new Intent(this,ScoreDetailsActivity.class);
+                startActivity(i);
+                break;
+            default:
+                break;
         }
     }
 }
