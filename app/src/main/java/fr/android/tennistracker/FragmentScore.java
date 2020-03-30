@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class FragmentScore extends Fragment {
     private boolean finJeu;
@@ -45,8 +44,8 @@ public class FragmentScore extends Fragment {
     private static final int JEU_VALEUR_AD = 50;
 
     private int nb_jeux_max;
-    private boolean avantage;
-    private int tie_break;
+    private boolean match_avantage;
+    private int tie_break; // == --nb_jeux_max
 
     private int score_jeu_actuel_j1;
     private int score_jeu_actuel_j2;
@@ -142,7 +141,7 @@ public class FragmentScore extends Fragment {
 
         nb_jeux_max = getArguments().getInt("NB_JEUX");
         tie_break = getArguments().getInt("TIE_BREAK");
-        avantage = getArguments().getBoolean("AVANTAGE");
+        match_avantage = getArguments().getBoolean("AVANTAGE");
 
         return view;
     }

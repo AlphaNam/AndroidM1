@@ -28,7 +28,7 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
     private FragmentScore fragmentScore;
     private FragmentService fragmentService;
     private FragmentEchange fragmentEchange;
-    private UtilsFragment fragmentUtils;
+    private FragmentUtils fragmentUtils;
 
     private boolean j1_sert;
     private int set_en_cours;
@@ -36,7 +36,6 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
     private static final String ACTIVITY_TITLE = "Enregistrement";
     private static final String JOUEUR_1 = "Joueur 1";
     private static final String JOUEUR_2 = "Joueur 2";
-    private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int REQUEST_TAKE_PHOTO = 1;
 
     private String currentPhotoPath;
@@ -56,6 +55,7 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match);
 
+        final Intent intentBackNewMatch = new Intent(this, NewMatch.class);
         String nomJoueur1 = null;
         String nomJoueur2 = null;
         int nb_jeux = 6;
@@ -96,7 +96,8 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
         mBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
+                startActivity(intentBackNewMatch);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -110,7 +111,7 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
         fragmentScore = new FragmentScore();
         fragmentService = new FragmentService();
         fragmentEchange = new FragmentEchange();
-        fragmentUtils = new UtilsFragment();
+        fragmentUtils = new FragmentUtils();
 
 
         Bundle bundle = new Bundle();

@@ -50,4 +50,6 @@
     <string name="statistiques_de_service">STATISTIQUES DE SERVICE</string>
     <string name="statistiques_de_retour">STATISTIQUES DE RETOUR</string>
     <string name="statistiques_des_points">STATISTIQUES DES POINTS</string>
+    <string name="longitude">Longitude :</string>
+    <string name="latitude">Latitude :</string>
 </resources>
