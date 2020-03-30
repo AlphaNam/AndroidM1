@@ -2,6 +2,8 @@ package fr.android.tennistracker;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -10,7 +12,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,6 +40,8 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
     private static final int REQUEST_TAKE_PHOTO = 1;
 
     private String currentPhotoPath;
+    private Bitmap image;
+    private File photoFile = null;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -200,7 +203,6 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
         // Ensure that there's a camera activity to handle the intent
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             // Create the File where the photo should go
-            File photoFile = null;
             try {
                 photoFile = createImageFile();
             } catch (IOException ex) {
@@ -231,15 +233,22 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
 
         // Save a file: path for use with ACTION_VIEW intents
         currentPhotoPath = image.getAbsolutePath();
-        galleryAddPic(currentPhotoPath);
+        galleryAddPic();
         return image;
     }
 
-    private void galleryAddPic(String currentPhotoPath) {
+    private void galleryAddPic() {
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
         File f = new File(currentPhotoPath);
         Uri contentUri = Uri.fromFile(f);
         mediaScanIntent.setData(contentUri);
         this.sendBroadcast(mediaScanIntent);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        image = BitmapFactory.decodeFile(currentPhotoPath);
+        MediaStore.Images.Media.insertImage(getContentResolver(),image,photoFile.getName(),"cool");
     }
 }
