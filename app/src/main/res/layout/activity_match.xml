@@ -48,4 +48,12 @@
         android:orientation="vertical">
     </FrameLayout>
 
+    <FrameLayout
+        android:id="@+id/utils_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5">
+
+    </FrameLayout>
+
 </LinearLayout>

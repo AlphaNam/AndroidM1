@@ -2,7 +2,10 @@ package fr.android.tennistracker;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,12 +15,19 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.FragmentManager;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MatchActivity extends AppCompatActivity implements FragmentScore.FragmentScoreListener {
     private FragmentScore fragmentScore;
     private FragmentService fragmentService;
     private FragmentEchange fragmentEchange;
+    private UtilsFragment fragmentUtils;
 
     private boolean j1_sert;
     private int set_en_cours;
@@ -25,6 +35,10 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
     private static final String ACTIVITY_TITLE = "Enregistrement";
     private static final String JOUEUR_1 = "Joueur 1";
     private static final String JOUEUR_2 = "Joueur 2";
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
+    private static final int REQUEST_TAKE_PHOTO = 1;
+
+    private String currentPhotoPath;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -93,13 +107,15 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
         fragmentScore = new FragmentScore();
         fragmentService = new FragmentService();
         fragmentEchange = new FragmentEchange();
+        fragmentUtils = new UtilsFragment();
+
 
         Bundle bundle = new Bundle();
         bundle.putString("NOM_JOUEUR_1", nomJoueur1);
         bundle.putString("NOM_JOUEUR_2", nomJoueur2);
-        bundle.putBoolean("AVANTAGE",avantage);
-        bundle.putInt("NB_JEUX",nb_jeux);
-        bundle.putInt("TIE_BREAK",tie_break);
+        bundle.putBoolean("AVANTAGE", avantage);
+        bundle.putInt("NB_JEUX", nb_jeux);
+        bundle.putInt("TIE_BREAK", tie_break);
 
         fragmentScore.setArguments(bundle);
 
@@ -108,6 +124,7 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
                 .add(R.id.score_layout, fragmentScore)
                 .add(R.id.service_layout, fragmentService)
                 .add(R.id.echange_layout, fragmentEchange)
+                .add(R.id.utils_layout, fragmentUtils)
                 .commit();
     }
 
@@ -176,5 +193,53 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
             j1_sert = true;
             fragmentScore.setServer(true);
         }
+    }
+
+    public void dispatchTakePictureIntent(View view) {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        // Ensure that there's a camera activity to handle the intent
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            // Create the File where the photo should go
+            File photoFile = null;
+            try {
+                photoFile = createImageFile();
+            } catch (IOException ex) {
+                // Error occurred while creating the File
+            }
+            // Continue only if the File was successfully created
+            if (photoFile != null) {
+                Uri photoURI = FileProvider.getUriForFile(MatchActivity.this,
+                        this.getApplicationContext().getPackageName() + ".provider",
+                        photoFile);
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+            }
+        }
+    }
+
+
+    private File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
+
+        // Save a file: path for use with ACTION_VIEW intents
+        currentPhotoPath = image.getAbsolutePath();
+        galleryAddPic(currentPhotoPath);
+        return image;
+    }
+
+    private void galleryAddPic(String currentPhotoPath) {
+        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+        File f = new File(currentPhotoPath);
+        Uri contentUri = Uri.fromFile(f);
+        mediaScanIntent.setData(contentUri);
+        this.sendBroadcast(mediaScanIntent);
     }
 }
