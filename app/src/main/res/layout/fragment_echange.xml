@@ -151,7 +151,7 @@
                 android:layout_toRightOf="@id/button_point_gagnant_j2"
                 android:background="@drawable/border_orange"
                 android:onClick="onInputService"
-                android:tag="faute_directe_j1"
+                android:tag="faute_directe_j2"
                 android:text="@string/faute_directe"
                 android:textAllCaps="false"
                 android:textColor="#FF9800" />

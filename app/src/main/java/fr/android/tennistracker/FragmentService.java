@@ -11,9 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 public class FragmentService extends Fragment {
-    private Button btn_ace_j1;
-    private Button btn_ace_j2;
-
 
     public FragmentService() {
         // Required empty public constructor

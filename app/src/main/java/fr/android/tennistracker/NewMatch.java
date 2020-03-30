@@ -20,6 +20,7 @@ import com.google.android.material.snackbar.Snackbar;
 public class NewMatch extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private EditText et_joueur1;
     private EditText et_joueur2;
+    private Spinner spinnerFormatMatch;
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -45,6 +46,39 @@ public class NewMatch extends AppCompatActivity implements AdapterView.OnItemSel
                     EditText et_joueur2 = (EditText) findViewById(R.id.et_joueur2);
                     intent.putExtra("NOM_JOUEUR_1", et_joueur1.getText().toString());
                     intent.putExtra("NOM_JOUEUR_2", et_joueur2.getText().toString());
+                    int nb_jeux = 6, tie_break =6;
+                    boolean avantage = true;
+                    switch (spinnerFormatMatch.getSelectedItemPosition()){
+                        case 1:
+                            nb_jeux = 5;
+                            tie_break = 5;
+                            break;
+                        case 2:
+                            nb_jeux = 4;
+                            tie_break = 4;
+                            break;
+                        case 3:
+                            nb_jeux = 5;
+                            tie_break = 4;
+                            avantage = false;
+                            break;
+                        case 4:
+                            nb_jeux = 4;
+                            tie_break = 3;
+                            avantage = false;
+                            break;
+                        case 5:
+                            nb_jeux = 3;
+                            tie_break = 2;
+                            avantage = false;
+                            break;
+                        default:
+                            break;
+                    }
+                    intent.putExtra("NB_JEUX", nb_jeux);
+                    intent.putExtra("AVANTAGE", avantage);
+                    intent.putExtra("TIE_BREAK", tie_break);
+
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 }
@@ -82,7 +116,7 @@ public class NewMatch extends AppCompatActivity implements AdapterView.OnItemSel
 
         invalidateOptionsMenu();
 
-        Spinner spinnerFormatMatch = (Spinner) findViewById(R.id.spinner_format_match);
+        spinnerFormatMatch = (Spinner) findViewById(R.id.spinner_format_match);
         ArrayAdapter<CharSequence> adapterFormatMatch = ArrayAdapter.createFromResource(this, R.array.formats_match, R.layout.support_simple_spinner_dropdown_item);
         adapterFormatMatch.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinnerFormatMatch.setAdapter(adapterFormatMatch);
