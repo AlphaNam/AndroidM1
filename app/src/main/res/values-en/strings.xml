@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="formats_match">
+        <item>"2 sets, 6 games, Advantage, TB 6\-6"</item>
+        <item>"2 sets, 5 games, Advantage, TB 5\-5"</item>
+        <item>"2 sets, 4 games, Advantage, TB 4\-4"</item>
+        <item>"2 sets, 5 games, No advantage, TB 4\-4"</item>
+        <item>"2 sets, 4 games, No advantage, TB 3\-3"</item>
+        <item>"2 sets, 3 games, No advantage, TB 2\-2"</item>
+    </string-array>
+
+    <string-array name="format_dernier_set">
+        <item>Normal set</item>
+        <item>Tie-break in 7 points</item>
+        <item>Super Tie-break in 10 points</item>
+    </string-array>
+
+    <string-array name="type_coup">
+        <item>Not specified</item>
+    </string-array>
+
+    <string name="deuxieme_balle">2nd ball</string>
+    <string name="double_faute">Double fault</string>
+    <string name="version_pro">PRO Version</string>
+    <string name="echange">RALLY</string>
+    <string name="faute_directe">Unforced error</string>
+    <string name="faute_provo">Forced error</string>
+    <string name="format_du_dernier_set">Last set format</string>
+    <string name="format_du_match">Match format</string>
+    <string name="joueur_1">PLAYER 1</string>
+    <string name="joueur_2">PLAYER 2</string>
+    <string name="latitude">Latitude</string>
+    <string name="matchs_precedents">Previous matches</string>
+    <string name="nom_joueur_1">Player 1 name</string>
+    <string name="nom_joueur_2">Player 2 name</string>
+    <string name="nouveau_match">New match</string>
+    <string name="tab_title_statistiques">STATS</string>
+    <string name="tab_title_historique">HISTORY</string>
+    <string name="tab_title_graphiques">CHARTS</string>
+    <string name="statistiques_genereales">GENERAL STATS</string>
+    <string name="statistiques_de_retour">RETURN STATS</string>
+    <string name="statistiques_de_service">SERVICE STATS</string>
+    <string name="statistiques_des_points">POINT STATS</string>
+    <string name="premiere_balle">1st ball</string>
+    <string name="point_gagnant">Winning point</string>
+    <string name="saisir_le_type_du_coup">Enter shot type</string>
+    <string name="erreur_saisie">Input error</string>
+    <string name="nom_jeueur_invalide">Player\'s names can\'t be empty</string>
+    <string name="new_match">New match</string>
+    <string name="joueur_1_lcase">Player 1</string>
+    <string name="joueur_2_lcase">Player 2</string>
+    <string name="passer_version_pro">Buy the PRO version !</string>
+    <string name="annuler_l_enregistrement">Stop recording</string>
+    <string name="demarrer">START</string>
+    <string name="donner_un_point_joueur_1">Give the point to Player 1</string>
+    <string name="donner_un_point_joueur_2">Give the point to Player 2</string>
+    <string name="terminer">END</string>
+    <string name="voir_les_statistiques">See stats</string>
+    <string name="saisir_le_type_de_coup">Enter shot type</string>
+    <string name="premier_serveur">First server</string>
+    <string name="enregistrement">Record</string>
+    <string name="remporte_match">has won the match !</string>
+    <string name="annuler">Cancel</string>
+    <string name="declarer_j1_vainqueur">Declare Player 1 as winner</string>
+    <string name="declarer_j2_vainqueur">Declare Player 2 as winner</string>
+    <string name="terminer_sans_vainqueur">End it without declaring any winner</string>
+    <string name="match_non_termine">The match is not finished yet. What do you want do ?</string>
+</resources>

@@ -205,7 +205,7 @@ public class FragmentScore extends Fragment {
                 init_set3();
             if(set_gagne_j1 == 2){
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(getContext());
-                mBuilder.setMessage(tv_nom_joueur1.getText().toString() + " a remporté le match !");
+                mBuilder.setMessage(tv_nom_joueur1.getText().toString() + " " + getString(R.string.remporte_match));
                 mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -241,7 +241,7 @@ public class FragmentScore extends Fragment {
                 init_set3();
             if(set_gagne_j2 == 2){
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(getContext());
-                mBuilder.setMessage(tv_nom_joueur2.getText().toString() + " a remporté le match !");
+                mBuilder.setMessage(tv_nom_joueur2.getText().toString() + " " + getString(R.string.remporte_match) );
                 mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

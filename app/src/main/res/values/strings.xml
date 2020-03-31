@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TennisTracker</string>
+    <string name="app_name" translatable="false">TennisTracker</string>
     <string name="matchs_precedents">Matchs précédents</string>
     <string name="version_pro">Version PRO</string>
     <string name="nouveau_match">Nouveau match</string>
@@ -22,34 +22,60 @@
     <string-array name="type_coup">
         <item>Ne pas saisir</item>
     </string-array>
-    <string name="title_activity_match">MatchActivity</string>
+    <string name="title_activity_match" translatable="false">MatchActivity</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="score">SCORE</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="score" translatable="false">SCORE</string>
     <string name="joueur_1">JOUEUR 1</string>
-    <string name="no_score">-</string>
+    <string name="no_score" translatable="false">-</string>
     <string name="joueur_2">JOUEUR 2</string>
     <string name="premiere_balle">1ère balle</string>
     <string name="deuxieme_balle">2ème balle</string>
     <string name="double_faute">Double faute</string>
-    <string name="ace">Ace</string>
+    <string name="ace" translatable="false">Ace</string>
     <string name="echange">ECHANGE</string>
     <string name="point_gagnant">Point gagnant</string>
     <string name="faute_directe">Faute directe</string>
     <string name="faute_provo">Faute provo.</string>
-    <string name="two">2</string>
-    <string name="one">1</string>
-    <string name="zero">0</string>
+    <string name="two" translatable="false">2</string>
+    <string name="one" translatable="false">1</string>
+    <string name="zero" translatable="false">0</string>
 
-    <string name="title_activity_score_details">ScoreDetailsActivity</string>
+    <string name="title_activity_score_details" translatable="false">ScoreDetailsActivity</string>
     <string name="tab_title_statistiques">STATISTIQUES</string>
     <string name="tab_title_graphiques">GRAPHIQUES</string>
     <string name="tab_title_historique">HISTORIQUE</string>
-    <string name="statistiques_genereales">STATISTIQUES GENEREALES</string>
+    <string name="statistiques_genereales">STATISTIQUES GENERALES</string>
     <string name="statistiques_de_service">STATISTIQUES DE SERVICE</string>
     <string name="statistiques_de_retour">STATISTIQUES DE RETOUR</string>
     <string name="statistiques_des_points">STATISTIQUES DES POINTS</string>
-    <string name="longitude">Longitude :</string>
+    <string name="longitude" translatable="false">Longitude :</string>
     <string name="latitude">Latitude :</string>
+    <string name="nom_joueur_1">Nom Joueur 1</string>
+    <string name="nom_joueur_2">Nom Joueur 2</string>
+    <string name="format_du_match">Format du match</string>
+    <string name="format_du_dernier_set">Format du dernier set</string>
+    <string name="saisir_le_type_du_coup">Saisir le type du coup</string>
+    <string name="erreur_saisie">Erreur de saisie</string>
+    <string name="nom_jeueur_invalide">Le nom des joueurs ne peut être vide</string>
+    <string name="new_match">Nouveau match</string>
+    <string name="joueur_1_lcase">Joueur 1</string>
+    <string name="joueur_2_lcase">Joueur 2</string>
+    <string name="passer_version_pro">Passez à la version PRO !</string>
+    <string name="demarrer">DÉMARRER</string>
+    <string name="terminer">TERMINER</string>
+    <string name="annuler_l_enregistrement">Annuler l\'enregistrement</string>
+    <string name="voir_les_statistiques">Voir les statistiques</string>
+    <string name="donner_un_point_joueur_1">Donner un point à Joueur 1</string>
+    <string name="donner_un_point_joueur_2">Donner un point à Joueur 2</string>
+    <string name="saisir_le_type_de_coup">Saisir le type de coup</string>
+    <string name="enregistrement">Enregistrement</string>
+    <string name="premier_serveur">Premier serveur</string>
+    <string name="remporte_match">a remporté le match !</string>
+    <string name="match_non_termine">Le match n\'est pas encore terminé. Que voulez-vous faire ?</string>
+    <string name="terminer_sans_vainqueur">Le terminer sans déclarer de vainqueur</string>
+    <string name="declarer_j1_vainqueur">Déclarer Joueur 1 vainqueur</string>
+    <string name="declarer_j2_vainqueur">Déclarer Joueur 2 vainqueur</string>
+    <string name="annuler">Annuler</string>
 </resources>

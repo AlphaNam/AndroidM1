@@ -55,9 +55,10 @@ public class FragmentUtils extends Fragment implements LocationListener {
             //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.s
+            // for ActivityCompat#requestPermissions for more details.
             return view;
         }
+        // PASSIVE PROVIDER ou provider
         Location location = locationManager.getLastKnownLocation(provider);
 
         // Initialize the location fields

@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -32,10 +33,6 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
 
     private boolean j1_sert;
     private int set_en_cours;
-
-    private static final String ACTIVITY_TITLE = "Enregistrement";
-    private static final String JOUEUR_1 = "Joueur 1";
-    private static final String JOUEUR_2 = "Joueur 2";
     private static final int REQUEST_TAKE_PHOTO = 1;
 
     private String currentPhotoPath;
@@ -74,16 +71,16 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setTitle(ACTIVITY_TITLE);
+        getSupportActionBar().setTitle(R.string.enregistrement);
         invalidateOptionsMenu();
 
         final String[] listItems = new String[]{
-                (nomJoueur1.isEmpty()) ? JOUEUR_1 : nomJoueur1,
-                (nomJoueur2.isEmpty()) ? JOUEUR_2 : nomJoueur2
+                (nomJoueur1.isEmpty()) ? getString(R.string.joueur_1_lcase) : nomJoueur1,
+                (nomJoueur2.isEmpty()) ? getString(R.string.joueur_2_lcase) : nomJoueur2
         };
 
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(MatchActivity.this);
-        mBuilder.setTitle("Premier serveur");
+        mBuilder.setTitle(R.string.premier_serveur);
         mBuilder.setItems(listItems, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -93,7 +90,7 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
                     onInputASent(false);
             }
         });
-        mBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        mBuilder.setNegativeButton(getString(R.string.annuler), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 startActivity(intentBackNewMatch);
@@ -238,6 +235,50 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
         return image;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_terminer:
+                final String[] listItems = new String[]{
+                        getString(R.string.annuler_l_enregistrement),
+                        getString(R.string.terminer_sans_vainqueur),
+                        getString(R.string.declarer_j1_vainqueur),
+                        getString(R.string.declarer_j2_vainqueur)
+                };
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(MatchActivity.this);
+                mBuilder.setTitle(R.string.match_non_termine);
+                mBuilder.setItems(listItems, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ///
+                        dialog.dismiss();
+                        /*if (which == 0)
+                            onInputASent(true);
+                        else
+                            onInputASent(false);*/
+                    }
+                });
+                mBuilder.setNegativeButton(getString(R.string.annuler), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //startActivity(intentBackNewMatch);
+                        //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    }
+                });
+
+
+                AlertDialog mDialog = mBuilder.create();
+                mDialog.setCanceledOnTouchOutside(false);
+                mDialog.setCancelable(false);
+                mDialog.show();
+
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private void galleryAddPic() {
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
         File f = new File(currentPhotoPath);
@@ -250,6 +291,6 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         image = BitmapFactory.decodeFile(currentPhotoPath);
-        MediaStore.Images.Media.insertImage(getContentResolver(),image,photoFile.getName(),"cool");
+        MediaStore.Images.Media.insertImage(getContentResolver(), image, photoFile.getName(), "cool");
     }
 }

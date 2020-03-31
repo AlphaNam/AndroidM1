@@ -45,15 +45,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
-                        android:text="Nom Joueur 1"
+                        android:text="@string/nom_joueur_1"
                         android:textColor="@color/colorPrimaryDark"
-                        android:textStyle="bold"></TextView>
+                        android:textStyle="bold">
+                    </TextView>
 
                     <EditText
                         android:id="@+id/et_joueur1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
+                        android:inputType="text"
                         android:singleLine="true"
                         android:textColor="@color/colorPrimaryDark" />
 
@@ -72,15 +74,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
-                        android:text="Nom Joueur 2"
+                        android:text="@string/nom_joueur_2"
                         android:textColor="@color/colorPrimaryDark"
-                        android:textStyle="bold"></TextView>
+                        android:textStyle="bold">
+                    </TextView>
 
                     <EditText
                         android:id="@+id/et_joueur2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
+                        android:inputType="text"
                         android:singleLine="true"
                         android:textColor="@color/colorPrimaryDark" />
 
@@ -111,9 +115,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Format du match"
+                    android:text="@string/format_du_match"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textStyle="bold"></TextView>
+                    android:textStyle="bold">
+                </TextView>
 
                 <Spinner
                     android:id="@+id/spinner_format_match"
@@ -135,9 +140,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Format du dernier set"
+                    android:text="@string/format_du_dernier_set"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textStyle="bold"></TextView>
+                    android:textStyle="bold">
+                </TextView>
 
                 <Spinner
                     android:id="@+id/spinner_dernier_set"
@@ -159,9 +165,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Saisir le type du coup"
+                    android:text="@string/saisir_le_type_du_coup"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textStyle="bold"></TextView>
+                    android:textStyle="bold">
+                </TextView>
 
                 <Spinner
                     android:id="@+id/spinner_type_coup"

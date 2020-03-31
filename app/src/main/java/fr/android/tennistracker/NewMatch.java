@@ -28,8 +28,8 @@ public class NewMatch extends AppCompatActivity implements AdapterView.OnItemSel
             case R.id.menu_demarrer:
                 if(et_joueur1.getText().toString().isEmpty() || et_joueur2.getText().toString().isEmpty()){
                     AlertDialog.Builder mBuilder = new AlertDialog.Builder(NewMatch.this);
-                    mBuilder.setTitle("Erreur de saisie");
-                    mBuilder.setMessage("Le nom des joueurs ne peut être vide");
+                    mBuilder.setTitle(R.string.erreur_saisie);
+                    mBuilder.setMessage(R.string.nom_jeueur_invalide);
                     mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -136,7 +136,7 @@ public class NewMatch extends AppCompatActivity implements AdapterView.OnItemSel
         spinnerTypeCoup.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Snackbar.make(view, "Passez à la version PRO !", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, R.string.passer_version_pro, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
 
@@ -147,13 +147,13 @@ public class NewMatch extends AppCompatActivity implements AdapterView.OnItemSel
         });
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Nouveau match");
+        getSupportActionBar().setTitle(R.string.new_match);
 
         et_joueur1 = (EditText)findViewById(R.id.et_joueur1);
         et_joueur2 = (EditText)findViewById(R.id.et_joueur2);
 
-        et_joueur1.setText("Joueur 1");
-        et_joueur2.setText("Joueur 2");
+        et_joueur1.setText(R.string.joueur_1_lcase);
+        et_joueur2.setText(R.string.joueur_2_lcase);
 
 
         //
