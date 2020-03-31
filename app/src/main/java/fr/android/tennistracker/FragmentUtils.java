@@ -59,7 +59,7 @@ public class FragmentUtils extends Fragment implements LocationListener {
             return view;
         }
         // PASSIVE PROVIDER ou provider
-        Location location = locationManager.getLastKnownLocation(provider);
+        Location location = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
 
         // Initialize the location fields
         if (location != null) {
