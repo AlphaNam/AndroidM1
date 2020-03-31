@@ -53,9 +53,10 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
         setContentView(R.layout.activity_match);
 
         final Intent intentBackNewMatch = new Intent(this, NewMatch.class);
+
         String nomJoueur1 = null;
         String nomJoueur2 = null;
-        int nb_jeux = 6;
+        int nb_jeux_max = 6;
         int tie_break = 6;
         boolean avantage = true;
 
@@ -63,7 +64,7 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
         if (extras != null) {
             nomJoueur1 = extras.getString("NOM_JOUEUR_1");
             nomJoueur2 = extras.getString("NOM_JOUEUR_2");
-            nb_jeux = extras.getInt("NB_JEUX");
+            nb_jeux_max = extras.getInt("NB_JEUX");
             avantage = extras.getBoolean("AVANTAGE");
             tie_break = extras.getInt("TIE_BREAK");
         }
@@ -115,7 +116,7 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
         bundle.putString("NOM_JOUEUR_1", nomJoueur1);
         bundle.putString("NOM_JOUEUR_2", nomJoueur2);
         bundle.putBoolean("AVANTAGE", avantage);
-        bundle.putInt("NB_JEUX", nb_jeux);
+        bundle.putInt("NB_JEUX", nb_jeux_max);
         bundle.putInt("TIE_BREAK", tie_break);
 
         fragmentScore.setArguments(bundle);

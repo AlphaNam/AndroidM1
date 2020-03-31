@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="11.3"
+    android:weightSum="10.7"
     tools:context=".FragmentTableauScorePlusDetailles">
 
     <LinearLayout
@@ -14,33 +14,76 @@
         android:layout_height="0dp"
         android:layout_weight="0.5"
         android:background="@color/design_default_color_primary_dark"
-        android:orientation="vertical" >
+        android:weightSum="1">
 
         <TextView
             android:id="@+id/tv_stat_general"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="0.5"
             android:gravity="center_vertical"
             android:text="@string/statistiques_genereales"
             android:textColor="@color/colorWhite" />
-    </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/layout_duree"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.7"
-        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_stat_general_j1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_vertical"
+            android:text="JOUEUR 1"
+            android:textColor="@color/colorWhite" />
+
+        <TextView
+            android:id="@+id/tv_stat_general_j2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_vertical"
+            android:text="JOUEUR 2"
+            android:textColor="@color/colorWhite" />
+
+
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layout_pt_gagnes"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="0.7"
-        android:orientation="vertical">
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/tv_point_gagnes"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="#2196F3"
+            android:text="POINT GAGNES"
+            android:layout_weight="0.5"/>
+
+        <TextView
+            android:id="@+id/tv_point_gagnes_j1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_horizontal|center"
+            android:text="-"
+            android:textColor="#2196F3" />
+
+        <TextView
+            android:id="@+id/tv_point_gagnes_j2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_horizontal|center"
+            android:text="-"
+            android:textColor="#2196F3"/>
     </LinearLayout>
+
+
 
     <LinearLayout
         android:id="@+id/layout_stat_service"
@@ -48,58 +91,207 @@
         android:layout_height="0dp"
         android:layout_weight="0.5"
         android:background="@color/design_default_color_primary_dark"
-        android:orientation="vertical">
+        android:weightSum="1">
+
 
         <TextView
             android:id="@+id/tv_stat_service"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="0.5"
             android:gravity="center_vertical"
             android:text="@string/statistiques_de_service"
+            android:textColor="@color/colorWhite" />
+
+        <TextView
+            android:id="@+id/tv_stat_service_j1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_vertical"
+            android:text="JOUEUR 2"
+            android:textColor="@color/colorWhite" />
+        <TextView
+            android:id="@+id/tv_stat_service_j2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_vertical"
+            android:text="JOUEUR 2"
             android:textColor="@color/colorWhite" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layout_1ere_balle"
+        android:id="@+id/layout_1ere_balles"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="0.7"
-        android:orientation="vertical">
+        android:weightSum="1">
+        <TextView
+            android:id="@+id/tv_1ere_balles"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="#2196F3"
+            android:text="1ERE BALLES"
+            android:layout_weight="0.5"/>
+        <TextView
+            android:id="@+id/tv_1ere_balles_j1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_horizontal|center"
+            android:text="-"
+            android:textColor="#2196F3" />
+
+        <TextView
+            android:id="@+id/tv_1ere_balles_j2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_horizontal|center"
+            android:text="-"
+            android:textColor="#2196F3"/>
+
+
+
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layout_aces"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="0.7"
-        android:orientation="vertical">
+        android:weightSum="1">
+        <TextView
+            android:id="@+id/tv_aces"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="#2196F3"
+            android:text="ACES"
+            android:layout_weight="0.5"/>
+
+        <TextView
+            android:id="@+id/tv_point_aces_j1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_horizontal|center"
+            android:text="-"
+            android:textColor="#2196F3" />
+
+        <TextView
+            android:id="@+id/tv_point_aces_j2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_horizontal|center"
+            android:text="-"
+            android:textColor="#2196F3"/>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layout_double_fautes"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="0.7"
-        android:orientation="vertical">
+        android:weightSum="1">
+        <TextView
+            android:id="@+id/tv_double_fautes"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="#2196F3"
+            android:text="DOUBLES FAUTES"
+            android:layout_weight="0.5"/>
+
+        <TextView
+            android:id="@+id/tv_double_fautes_j1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_horizontal|center"
+            android:text="-"
+            android:textColor="#2196F3" />
+
+        <TextView
+            android:id="@+id/tv_double_fautes_j2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_horizontal|center"
+            android:text="-"
+            android:textColor="#2196F3"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layout_balles_de_break_sauvees"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="0.7"
-        android:orientation="vertical">
+        android:weightSum="1">
+        <TextView
+            android:id="@+id/tv_balles_de_break_sauvees"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="#2196F3"
+            android:text="BALLES DE BREAK SAUVEES"
+            android:layout_weight="0.5"/>
+        <TextView
+            android:id="@+id/tv_balles_de_break_sauvees_j1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_horizontal|center"
+            android:text="-"
+            android:textColor="#2196F3" />
+
+        <TextView
+            android:id="@+id/tv_balles_de_break_sauvees_j2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_horizontal|center"
+            android:text="-"
+            android:textColor="#2196F3"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layout_pt_gagnees_sur_1ere_balle"
+        android:id="@+id/layout_pt_gagnes_sur_1ere_balle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:weightSum="1">
 
+        <TextView
+            android:id="@+id/tv_pt_gagnes_sur_1ere_balle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="#2196F3"
+            android:text="POINT GAGNES SUR 1ERE BALLE"
+            android:layout_weight="0.5"/>
+        <TextView
+            android:id="@+id/tv_pt_gagnes_sur_1ere_balle_j1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_horizontal|center"
+            android:text="-"
+            android:textColor="#2196F3" />
+
+        <TextView
+            android:id="@+id/tv_pt_gagnes_sur_1ere_balle_j2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_horizontal|center"
+            android:text="-"
+            android:textColor="#2196F3"/>
     </LinearLayout>
 
     <LinearLayout
@@ -108,33 +300,105 @@
         android:layout_height="0dp"
         android:layout_weight="0.5"
         android:background="@color/design_default_color_primary_dark"
-        android:orientation="vertical">
+        android:weightSum="1">
 
         <TextView
             android:id="@+id/tv_stat_retour"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="0.5"
             android:gravity="center_vertical"
             android:text="@string/statistiques_de_retour"
+            android:textColor="@color/colorWhite" />
+
+        <TextView
+            android:id="@+id/tv_stat_retour_j1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_vertical"
+            android:text="JOUEUR 1"
+            android:textColor="@color/colorWhite" />
+
+        <TextView
+            android:id="@+id/tv_stat_retour_j2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_vertical"
+            android:text="JOUEUR 2"
             android:textColor="@color/colorWhite" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layout_balle_break_converties"
+        android:id="@+id/layout_balles_de_break_converties"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:layout_weight="0.7"
+        android:weightSum="1">
 
+        <TextView
+            android:id="@+id/tv_balles_de_break_converties"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="#2196F3"
+            android:text="BALLE DE BREAK CONVERTIES"
+            android:layout_weight="0.5"/>
+
+        <TextView
+            android:id="@+id/tv_balles_de_break_converties_j1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_horizontal|center"
+            android:text="-"
+            android:textColor="#2196F3" />
+
+        <TextView
+            android:id="@+id/tv_balles_de_break_converties_j2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_horizontal|center"
+            android:text="-"
+            android:textColor="#2196F3"/>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layout_pt_gagnes_2eme_balle_adversaire"
+        android:id="@+id/layout_pt_gagnes_sur_2eme_balle_adversaire"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:layout_weight="1.4"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/tv_pt_gagnes_sur_2eme_balle_adversaire"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="#2196F3"
+            android:text="POINT GAGNES SUR LE 2EME BALLE ADVERSAIRE"
+            android:layout_weight="0.5"/>
+        <TextView
+            android:id="@+id/tv_pt_gagnes_sur_2eme_balle_adversaire_j1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_horizontal|center"
+            android:text="-"
+            android:textColor="#2196F3" />
+
+        <TextView
+            android:id="@+id/tv_pt_gagnes_sur_2eme_balle_adversaire_j2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_horizontal|center"
+            android:text="-"
+            android:textColor="#2196F3"/>
     </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/layout_stat_points"
@@ -142,41 +406,135 @@
         android:layout_height="0dp"
         android:layout_weight="0.5"
         android:background="@color/design_default_color_primary_dark"
-        android:orientation="vertical">
+        android:weightSum="1">
 
         <TextView
             android:id="@+id/tv_stat_points"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="0.5"
             android:gravity="center_vertical"
             android:text="@string/statistiques_des_points"
+            android:textColor="@color/colorWhite" />
+
+        <TextView
+            android:id="@+id/tv_stat_points_j1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_vertical"
+            android:text="JOUEUR 1"
+            android:textColor="@color/colorWhite" />
+
+        <TextView
+            android:id="@+id/tv_stat_points_j2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_vertical"
+            android:text="JOUEUR 2"
             android:textColor="@color/colorWhite" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layout_pt_gagnants"
+        android:id="@+id/layout_point_gagnants"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="0.7"
-        android:orientation="vertical">
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/tv_point_gagnants"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="#2196F3"
+            android:text="POINT GAGNANTS"
+            android:layout_weight="0.5"/>
+
+        <TextView
+            android:id="@+id/tv_point_gagnants_j1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_horizontal|center"
+            android:text="-"
+            android:textColor="#2196F3" />
+
+        <TextView
+            android:id="@+id/tv_point_gagnants_j2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_horizontal|center"
+            android:text="-"
+            android:textColor="#2196F3"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/layout_fautes_directes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.7"
-        android:orientation="vertical">
 
+    <LinearLayout
+        android:id="@+id/layout_point_directes"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.7"
+        android:weightSum="1">
+        <TextView
+            android:id="@+id/tv_point_directes"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="#2196F3"
+            android:text="POINT DIRECTES"
+            android:layout_weight="0.5"/>
+        <TextView
+            android:id="@+id/tv_point_directes_j1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_horizontal|center"
+            android:text="-"
+            android:textColor="#2196F3" />
+
+        <TextView
+            android:id="@+id/tv_point_directes_j2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_horizontal|center"
+            android:text="-"
+            android:textColor="#2196F3"/>
     </LinearLayout>
-
     <LinearLayout
-        android:id="@+id/layout_fautes_provoquees"
+        android:id="@+id/layout_point_provoquees"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="0.7"
-        android:orientation="vertical">
+        android:weightSum="1">
+        <TextView
+            android:id="@+id/tv_point_provoquees"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="#2196F3"
+            android:text="POINT PROVOQUEES"
+            android:layout_weight="0.5"/>
+        <TextView
+            android:id="@+id/tv_point_provoquees_j1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_horizontal|center"
+            android:text="-"
+            android:textColor="#2196F3" />
 
+        <TextView
+            android:id="@+id/tv_point_provoquees_j2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_horizontal|center"
+            android:text="-"
+            android:textColor="#2196F3"/>
     </LinearLayout>
 
 </LinearLayout>

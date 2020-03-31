@@ -12,6 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
+import fr.android.tennistracker.modele.AccesDistant;
+
 public class FragmentScore extends Fragment {
     private boolean finJeu;
     private TextView tv_nom_joueur1;
@@ -58,6 +66,8 @@ public class FragmentScore extends Fragment {
 
     private boolean match_gagne;
 
+    private static AccesDistant accesDistant;
+
     public void setServer(boolean joueur1_sert) {
         if(joueur1_sert){
             tv_nom_joueur1.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_fiber_manual_record_yellow_24dp, 0);
@@ -71,6 +81,7 @@ public class FragmentScore extends Fragment {
     }
 
     public void init_set1(){
+        accesDistant = new AccesDistant();
         tv_score_set1_j1.setText(CHAINE_JEU_VALEUR_0);
         tv_score_set1_j2.setText(CHAINE_JEU_VALEUR_0);
         set_en_cours = 1;
@@ -214,6 +225,16 @@ public class FragmentScore extends Fragment {
                 });
                 AlertDialog mDialog = mBuilder.create();
                 mDialog.show();
+
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                accesDistant.envoi("dernier", new JSONArray());
+                /*List<String> laList = new ArrayList<String>();
+                laList.add(tv_nom_joueur1.getText().toString());
+                laList.add(tv_nom_joueur2.getText().toString());
+                JSONArray laListJSON = new JSONArray(laList);
+
+                accesDistant.envoi("enreg" , laListJSON);*/
                 match_gagne = true;
             }
         }
