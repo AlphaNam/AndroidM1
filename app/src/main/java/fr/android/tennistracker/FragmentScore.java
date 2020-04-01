@@ -264,9 +264,6 @@ public class FragmentScore extends Fragment {
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                 //accesDistant.envoi("dernier", new JSONArray());
-                List<String> laList = new ArrayList<String>();
-                laList.add(tv_nom_joueur1.getText().toString());
-                laList.add(tv_nom_joueur2.getText().toString());
 /*                String avantage = null;
                 if(match_avantage)
                     avantage = " Avantage";
@@ -281,11 +278,10 @@ public class FragmentScore extends Fragment {
                 laList.add(format_match);
 */
 
-                JSONArray laListJSON = new JSONArray(laList);
-
-                //accesDistant.envoi("enreg" , laListJSON);
-                controleur.creerMatch(tv_nom_joueur1.getText().toString(),tv_nom_joueur2.getText().toString()
-                , nb_jeux_max, match_avantage, tie_break);
+                controleur.creerMatch(tv_nom_joueur1.getText().toString(),tv_nom_joueur2.getText().toString(),point_gagnes_j1,point_gagnes_j2,
+                        0,0,cptAceJ1,cptAceJ2,cptDoubleFauteJ1,cptDoubleFauteJ2,"0/0","0/0",
+                        0,0,"0/0","0/0",0,0,
+                        cptPointsGagnantJ1,cptPointsGagnantJ2,cptFauteDirecteJ1,cptFauteDirecteJ2,cptFauteProvoqueJ1,cptFauteProvoqueJ2,tv_nom_joueur1.getText().toString());
 
                 match_gagne = true;
             }
