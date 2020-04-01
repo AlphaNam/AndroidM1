@@ -40,7 +40,7 @@ public class AccesHTTP extends AsyncTask<String, Integer, Long> {
 
     }
 
-    // Connexion bdd en tâche de fond
+    // Connexion à la base en tâche de fond
     @Override
     protected Long doInBackground(String... strings) {
         HttpClient cnxHttp = new DefaultHttpClient();
@@ -48,7 +48,7 @@ public class AccesHTTP extends AsyncTask<String, Integer, Long> {
 
 
         try {
-            // encodage parametres
+            // Encodage des paramètres
             paramCnx.setEntity(new UrlEncodedFormEntity(parameter));
 
             // connexion et envoi de parametre, attente de reponse

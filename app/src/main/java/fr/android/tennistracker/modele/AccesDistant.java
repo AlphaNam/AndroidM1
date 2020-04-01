@@ -36,6 +36,7 @@ public class AccesDistant implements AsyncResponse {
                 Log.d("enreg", "*************************" + message[1]);
             } else{
                 if(message[0].equals("dernier")){
+                    // control.setMatch(match);
                     Log.d("enreg", "*************************" + message[1]);
                 } else{
                     if(message[0].equals("Erreur !")){

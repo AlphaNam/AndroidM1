@@ -26,6 +26,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MatchActivity extends AppCompatActivity implements FragmentScore.FragmentScoreListener {
+
+    public enum Evenement{
+        ACE,
+        POINT_GAGNANT,
+        FAUTE_DIRECTE,
+        FAUTE_PROVOQUEE,
+        DOUBLE_FAUTE
+    }
+
     private FragmentScore fragmentScore;
     private FragmentService fragmentService;
     private FragmentEchange fragmentEchange;
@@ -86,9 +95,9 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (which == 0)
-                    onInputASent(true);
+                    setServer(true);
                 else
-                    onInputASent(false);
+                    setServer(false);
             }
         });
         mBuilder.setNegativeButton(getString(R.string.annuler), new DialogInterface.OnClickListener() {
@@ -112,14 +121,22 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
         fragmentUtils = new FragmentUtils();
 
 
-        Bundle bundle = new Bundle();
-        bundle.putString("NOM_JOUEUR_1", nomJoueur1);
-        bundle.putString("NOM_JOUEUR_2", nomJoueur2);
-        bundle.putBoolean("AVANTAGE", avantage);
-        bundle.putInt("NB_JEUX", nb_jeux_max);
-        bundle.putInt("TIE_BREAK", tie_break);
+        Bundle bundleFragScore = new Bundle();
+        Bundle bundleFragService = new Bundle();
 
-        fragmentScore.setArguments(bundle);
+        if(j1_sert)
+            bundleFragService.putString("serveur",nomJoueur1);
+        else
+            bundleFragService.putString("serveur", nomJoueur2);
+
+        bundleFragScore.putString("NOM_JOUEUR_1", nomJoueur1);
+        bundleFragScore.putString("NOM_JOUEUR_2", nomJoueur2);
+        bundleFragScore.putBoolean("AVANTAGE", avantage);
+        bundleFragScore.putInt("NB_JEUX", nb_jeux_max);
+        bundleFragScore.putInt("TIE_BREAK", tie_break);
+
+        fragmentScore.setArguments(bundleFragScore);
+        fragmentService.setArguments(bundleFragService);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
@@ -131,7 +148,7 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
     }
 
     @Override
-    public void onInputASent(boolean joueur1_sert) {
+    public void setServer(boolean joueur1_sert) {
         fragmentScore.init_set1();
         fragmentScore.setServer(joueur1_sert);
         j1_sert = joueur1_sert;
@@ -142,26 +159,36 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
         Button myBtn = (Button) view;
         switch (myBtn.getTag().toString()) {
             case "ace":
-                if (j1_sert)
-                    fragmentScore.updateScore(true);
-                else
-                    fragmentScore.updateScore(false);
+                fragmentScore.updateScore(j1_sert, Evenement.ACE);
                 break;
             case "double_faute":
-                if (j1_sert)
-                    fragmentScore.updateScore(false);
-                else
-                    fragmentScore.updateScore(true);
+                fragmentScore.updateScore(!j1_sert, Evenement.DOUBLE_FAUTE);
                 break;
             case "point_gagnant_j1":
+                fragmentScore.updateScore(true, Evenement.POINT_GAGNANT);
+                break;
             case "faute_provoq_j2":
+                fragmentScore.updateScore(true, Evenement.FAUTE_PROVOQUEE);
+                break;
             case "faute_directe_j2":
-                fragmentScore.updateScore(true);
+                fragmentScore.updateScore(true, Evenement.FAUTE_DIRECTE);
                 break;
             case "point_gagnant_j2":
+                fragmentScore.updateScore(false, Evenement.POINT_GAGNANT);
+                break;
             case "faute_provoq_j1":
+                fragmentScore.updateScore(false, Evenement.FAUTE_PROVOQUEE);
+                break;
             case "faute_directe_j1":
-                fragmentScore.updateScore(false);
+                fragmentScore.updateScore(false, Evenement.FAUTE_DIRECTE);
+                break;
+
+            case "btnScoreDetails":
+                Intent i = new Intent(this, ScoreDetailsActivity.class);
+                Bundle infosMatch = new Bundle();
+                infosMatch.putSerializable("infos_match", fragmentScore.getInfosMatch());
+                i.putExtras(infosMatch);
+                startActivity(i);
                 break;
 
             default:
@@ -174,27 +201,9 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
 
     }
 
-    public void launch_new_score_details_activity(View view) {
-        Button myButton = (Button) view;
-        switch (myButton.getTag().toString()) {
-            case "btnScoreDetails":
-                Intent i = new Intent(this, ScoreDetailsActivity.class);
-                startActivity(i);
-                break;
-            default:
-                break;
-        }
-    }
-
-
     public void inverseService() {
-        if (j1_sert) {
-            j1_sert = false;
-            fragmentScore.setServer(false);
-        } else {
-            j1_sert = true;
-            fragmentScore.setServer(true);
-        }
+        j1_sert = !j1_sert;
+        fragmentScore.setServer(j1_sert);
     }
 
     public void dispatchTakePictureIntent(View view) {
@@ -251,23 +260,15 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
                 mBuilder.setItems(listItems, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        ///
+                        // TODO
                         dialog.dismiss();
-                        /*if (which == 0)
-                            onInputASent(true);
-                        else
-                            onInputASent(false);*/
                     }
                 });
                 mBuilder.setNegativeButton(getString(R.string.annuler), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //startActivity(intentBackNewMatch);
-                        //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     }
                 });
-
-
                 AlertDialog mDialog = mBuilder.create();
                 mDialog.setCanceledOnTouchOutside(false);
                 mDialog.setCancelable(false);

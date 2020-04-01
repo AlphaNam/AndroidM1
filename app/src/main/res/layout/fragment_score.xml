@@ -40,7 +40,7 @@
             android:drawableEnd="@drawable/ic_timeline_black_24dp"
             android:drawableRight="@drawable/ic_timeline_black_24dp"
             android:gravity="start|end"
-            android:onClick="launch_new_score_details_activity"
+            android:onClick="onInputService"
             android:tag="btnScoreDetails" />
 
 

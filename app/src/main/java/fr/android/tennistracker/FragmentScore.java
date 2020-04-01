@@ -16,9 +16,12 @@ import org.json.JSONArray;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import fr.android.tennistracker.controleur.Controleur;
 import fr.android.tennistracker.modele.AccesDistant;
+import fr.android.tennistracker.modele.Match;
 
 public class FragmentScore extends Fragment {
     private boolean finJeu;
@@ -66,7 +69,20 @@ public class FragmentScore extends Fragment {
 
     private boolean match_gagne;
 
-    private static AccesDistant accesDistant;
+    private Controleur controleur;
+    private Match match;
+
+    private int point_gagnes_j1, point_gagnes_j2;
+
+    private int cptAceJ1, cptAceJ2;
+    private int cptDoubleFauteJ1, cptDoubleFauteJ2;
+    private int cptPointsGagnantJ1, cptPointsGagnantJ2;
+    private int cptFauteDirecteJ1, cptFauteDirecteJ2;
+    private int cptFauteProvoqueJ1, cptFauteProvoqueJ2;
+
+    // private Controleur control
+
+    //private static AccesDistant accesDistant;
 
     public void setServer(boolean joueur1_sert) {
         if(joueur1_sert){
@@ -81,12 +97,25 @@ public class FragmentScore extends Fragment {
     }
 
     public void init_set1(){
-        accesDistant = new AccesDistant();
+        //accesDistant = new AccesDistant();
         tv_score_set1_j1.setText(CHAINE_JEU_VALEUR_0);
         tv_score_set1_j2.setText(CHAINE_JEU_VALEUR_0);
         set_en_cours = 1;
         resetJeuActuel();
         resetSetActuel();
+        point_gagnes_j1 = 0;
+        point_gagnes_j2 = 0;
+        cptAceJ1 = 0;
+        cptAceJ2 = 0;
+        cptPointsGagnantJ1 = 0;
+        cptPointsGagnantJ2 = 0;
+        cptFauteProvoqueJ1 = 0;
+        cptFauteProvoqueJ2 = 0;
+        cptFauteDirecteJ1 = 0;
+        cptFauteDirecteJ2 = 0;
+        cptDoubleFauteJ1 = 0;
+        cptDoubleFauteJ2 = 0;
+
         match_gagne = false;
     }
 
@@ -103,9 +132,9 @@ public class FragmentScore extends Fragment {
     }
 
 
-    public void updateScore(boolean j1_point) {
+    public void updateScore(boolean j1_point, MatchActivity.Evenement evenement) {
         if(!match_gagne)
-            updateScoreSet1(j1_point);
+            updateScoreSet1(j1_point, evenement);
     }
 
     public boolean finJeu() {
@@ -113,7 +142,7 @@ public class FragmentScore extends Fragment {
     }
 
     public interface FragmentScoreListener{
-        void onInputASent(boolean joueur1_sert);
+        void setServer(boolean joueur1_sert);
     }
 
     public FragmentScore() {
@@ -128,6 +157,10 @@ public class FragmentScore extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        // GET INSTANCE DU CONTROLEUR
+        // oontrol = Controleur.getInstance();
+
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_score, container, false);
@@ -153,6 +186,8 @@ public class FragmentScore extends Fragment {
         nb_jeux_max = getArguments().getInt("NB_JEUX");
         tie_break = getArguments().getInt("TIE_BREAK");
         match_avantage = getArguments().getBoolean("AVANTAGE");
+
+        controleur = Controleur.getInstance();
 
         return view;
     }
@@ -228,13 +263,30 @@ public class FragmentScore extends Fragment {
 
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                accesDistant.envoi("dernier", new JSONArray());
-                /*List<String> laList = new ArrayList<String>();
+                //accesDistant.envoi("dernier", new JSONArray());
+                List<String> laList = new ArrayList<String>();
                 laList.add(tv_nom_joueur1.getText().toString());
                 laList.add(tv_nom_joueur2.getText().toString());
+/*                String avantage = null;
+                if(match_avantage)
+                    avantage = " Avantage";
+                else
+                    avantage = "Pas d'avantage";
+
+                String jeux = Integer.toString(nb_jeux_max) + " jeux";
+                String tb = "TB " + Integer.toString(tie_break) + "-" + Integer.toString(tie_break);
+
+                String format_match = jeux + ", " + avantage + ", " + tb;
+
+                laList.add(format_match);
+*/
+
                 JSONArray laListJSON = new JSONArray(laList);
 
-                accesDistant.envoi("enreg" , laListJSON);*/
+                //accesDistant.envoi("enreg" , laListJSON);
+                controleur.creerMatch(tv_nom_joueur1.getText().toString(),tv_nom_joueur2.getText().toString()
+                , nb_jeux_max, match_avantage, tie_break);
+
                 match_gagne = true;
             }
         }
@@ -293,14 +345,51 @@ public class FragmentScore extends Fragment {
         score_set_actuel_j2 = 0;
     }
 
-    private void updateScoreSet1(boolean j1_point){
-        if(j1_point)
+    private void updateScoreSet1(boolean j1_point, MatchActivity.Evenement evenement){
+        if(j1_point) {
             updateJeuActuel_J1();
-        else
+            switch (evenement){
+                case ACE:
+                    cptAceJ1++;
+                    break;
+                case DOUBLE_FAUTE:
+                    cptDoubleFauteJ1++;
+                    break;
+                case FAUTE_DIRECTE:
+                    cptFauteDirecteJ1++;
+                    break;
+                case FAUTE_PROVOQUEE:
+                    cptFauteProvoqueJ1++;
+                    break;
+                case POINT_GAGNANT:
+                    cptPointsGagnantJ1++;
+                    break;
+            }
+        }
+        else {
             updateJeuActuel_J2();
+            switch (evenement){
+                case ACE:
+                    cptAceJ2++;
+                    break;
+                case DOUBLE_FAUTE:
+                    cptDoubleFauteJ2++;
+                    break;
+                case FAUTE_DIRECTE:
+                    cptFauteDirecteJ2++;
+                    break;
+                case FAUTE_PROVOQUEE:
+                    cptFauteProvoqueJ2++;
+                    break;
+                case POINT_GAGNANT:
+                    cptPointsGagnantJ2++;
+                    break;
+            }
+        }
     }
 
     private void updateJeuActuel_J2() {
+        point_gagnes_j2++;
         // CAS 0 -> 15
         if(score_jeu_actuel_j2 == JEU_VALEUR_0) {
             score_jeu_actuel_j2 = JEU_VALEUR_15;
@@ -342,6 +431,7 @@ public class FragmentScore extends Fragment {
     }
 
     private void updateJeuActuel_J1() {
+        point_gagnes_j1++;
         // CAS 0 -> 15
         if(score_jeu_actuel_j1 == JEU_VALEUR_0) {
             score_jeu_actuel_j1 = JEU_VALEUR_15;
@@ -388,5 +478,46 @@ public class FragmentScore extends Fragment {
         tv_score_jeu_actuel_j1.setText(CHAINE_JEU_VALEUR_40);
         score_jeu_actuel_j2 = JEU_VALEUR_40;
         score_jeu_actuel_j1 = JEU_VALEUR_40;
+    }
+
+    /**
+     * public void recupMatch(){
+     *     match = Control.match
+     * }
+     */
+
+    public void recupMatch(){
+        match = Controleur.match;
+    }
+
+    public HashMap<String,String> getInfosMatch(){
+        HashMap<String,String> infosMatch = new HashMap<>();
+        infosMatch.put("nom_joueur_1",tv_nom_joueur1.getText().toString());
+        infosMatch.put("nom_joueur_2",tv_nom_joueur2.getText().toString());
+        infosMatch.put("score_set1_j1", tv_score_set1_j1.getText().toString());
+        infosMatch.put("score_set1_j2", tv_score_set1_j2.getText().toString());
+        infosMatch.put("score_set2_j1", tv_score_set2_j1.getText().toString());
+        infosMatch.put("score_set2_j2", tv_score_set2_j2.getText().toString());
+        infosMatch.put("score_set3_j1", tv_score_set3_j1.getText().toString());
+        infosMatch.put("score_set3_j2", tv_score_set3_j2.getText().toString());
+        infosMatch.put("cpt_ace_j1", Integer.toString(cptAceJ1));
+        infosMatch.put("cpt_ace_j2", Integer.toString(cptAceJ2));
+
+        infosMatch.put("double_faute_j1", Integer.toString(cptDoubleFauteJ1));
+        infosMatch.put("double_faute_j2", Integer.toString(cptDoubleFauteJ2));
+
+        infosMatch.put("cpt_faute_directe_j1",Integer.toString(cptFauteDirecteJ1));
+        infosMatch.put("cpt_faute_directe_j2",Integer.toString(cptFauteDirecteJ2));
+
+        infosMatch.put("cpt_faute_provoquee_j1",Integer.toString(cptFauteProvoqueJ1));
+        infosMatch.put("cpt_faute_provoquee_j2",Integer.toString(cptFauteProvoqueJ2));
+
+        infosMatch.put("cpt_point_gagnant_j1", Integer.toString(cptPointsGagnantJ1));
+        infosMatch.put("cpt_point_gagnant_j2", Integer.toString(cptPointsGagnantJ2));
+
+        infosMatch.put("cpt_point_gagne_j1", Integer.toString(point_gagnes_j1));
+        infosMatch.put("cpt_point_gagne_j2", Integer.toString(point_gagnes_j2));
+
+        return infosMatch;
     }
 }

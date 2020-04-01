@@ -1,6 +1,7 @@
 package fr.android.tennistracker.ui.main;
 
 import android.content.Context;
+import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
@@ -8,10 +9,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import java.util.HashMap;
+
 import fr.android.tennistracker.Fragment1Statistiques;
 import fr.android.tennistracker.Fragment2Graphiques;
 import fr.android.tennistracker.Fragment3Hitorique;
 import fr.android.tennistracker.R;
+import fr.android.tennistracker.ScoreDetailsActivity;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -34,6 +38,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         switch(position){
             case 0:
                 fragment = new Fragment1Statistiques();
+                ScoreDetailsActivity scoreDetailsActivity = (ScoreDetailsActivity)mContext;
+                Bundle bundle = scoreDetailsActivity.getIntent().getExtras();
+                fragment.setArguments(bundle);
                 break;
             case 1:
                 fragment = new Fragment2Graphiques();
