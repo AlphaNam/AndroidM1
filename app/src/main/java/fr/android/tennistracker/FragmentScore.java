@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,26 +80,48 @@ public class FragmentScore extends Fragment {
     private int score_set2_j1, score_set2_j2;
     private int score_set3_j1, score_set3_j2;
 
-    // private Controleur control
-
-    //private static AccesDistant accesDistant;
 
     public void setServer(boolean joueur1_sert) {
-        if(joueur1_sert){
-            tv_nom_joueur1.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_fiber_manual_record_yellow_24dp, 0);
-            tv_nom_joueur2.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_fiber_manual_record_black_24dp, 0);
-        }
-        else{
-            tv_nom_joueur1.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_fiber_manual_record_black_24dp, 0);
-            tv_nom_joueur2.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_fiber_manual_record_yellow_24dp, 0);
-        }
         j1_sert = joueur1_sert;
+
+        final Handler handlerSetServer = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                handlerSetServer.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(j1_sert){
+                            tv_nom_joueur1.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_fiber_manual_record_yellow_24dp, 0);
+                            tv_nom_joueur2.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_fiber_manual_record_black_24dp, 0);
+                        }
+                        else{
+                            tv_nom_joueur1.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_fiber_manual_record_black_24dp, 0);
+                            tv_nom_joueur2.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_fiber_manual_record_yellow_24dp, 0);
+                        }
+                    }
+                });
+            }
+        };
+        new Thread(runnable).start();
     }
 
     public void init_set1(){
-        //accesDistant = new AccesDistant();
-        tv_score_set1_j1.setText(CHAINE_JEU_VALEUR_0);
-        tv_score_set1_j2.setText(CHAINE_JEU_VALEUR_0);
+        final Handler mHandler = new Handler();
+        Runnable runnableInitSet1 = new Runnable() {
+            @Override
+            public void run() {
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        tv_score_set1_j1.setText(CHAINE_JEU_VALEUR_0);
+                        tv_score_set1_j2.setText(CHAINE_JEU_VALEUR_0);
+                    }
+                });
+            }
+        };
+        new Thread(runnableInitSet1).start();
+
         set_en_cours = 1;
         resetJeuActuel();
         resetSetActuel();
@@ -452,8 +475,20 @@ public class FragmentScore extends Fragment {
     }
 
     private void resetJeuActuel(){
-        tv_score_jeu_actuel_j1.setText(CHAINE_JEU_VALEUR_0);
-        tv_score_jeu_actuel_j2.setText(CHAINE_JEU_VALEUR_0);
+        final Handler mHandler = new Handler();
+        Runnable runnableReset = new Runnable() {
+            @Override
+            public void run() {
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        tv_score_jeu_actuel_j1.setText(CHAINE_JEU_VALEUR_0);
+                        tv_score_jeu_actuel_j2.setText(CHAINE_JEU_VALEUR_0);
+                    }
+                });
+            }
+        };
+        new Thread(runnableReset).start();
 
         score_jeu_actuel_j1 = JEU_VALEUR_0;
         score_jeu_actuel_j2 = JEU_VALEUR_0;

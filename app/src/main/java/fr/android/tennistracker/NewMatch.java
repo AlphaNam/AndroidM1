@@ -3,6 +3,7 @@ package fr.android.tennistracker;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -150,12 +151,20 @@ public class NewMatch extends AppCompatActivity implements AdapterView.OnItemSel
         et_joueur1 = (EditText)findViewById(R.id.et_joueur1);
         et_joueur2 = (EditText)findViewById(R.id.et_joueur2);
 
-        et_joueur1.setText(R.string.joueur_1_lcase);
-        et_joueur2.setText(R.string.joueur_2_lcase);
-
-
-        //
-
+        final Handler handler = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        et_joueur1.setText(R.string.joueur_1_lcase);
+                        et_joueur2.setText(R.string.joueur_2_lcase);
+                    }
+                });
+            }
+        };
+        new Thread(runnable).start();
     }
 
     @Override
