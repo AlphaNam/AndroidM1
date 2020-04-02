@@ -1,4 +1,4 @@
-package fr.android.tennistracker;
+package fr.android.tennistracker.vue.tabbed_statistics;
 
 import android.os.Bundle;
 
@@ -16,11 +16,10 @@ import android.widget.TextView;
 
 import java.util.HashMap;
 
+import fr.android.tennistracker.R;
 import fr.android.tennistracker.ui.main.SectionsPagerAdapter;
 
 public class ScoreDetailsActivity extends AppCompatActivity {
-
-   // private FragmentTableauScorePlusDetailles fragmentTableauScorePlusDetailles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,17 +31,6 @@ public class ScoreDetailsActivity extends AppCompatActivity {
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
 
-        HashMap<String, String> infosMatch = null;
-        Bundle bundle = this.getIntent().getExtras();
-        if(bundle != null){
-            infosMatch = (HashMap<String,String>)bundle.getSerializable("infos_match");
-        }
-
-
-       /* fragmentTableauScorePlusDetailles = new FragmentTableauScorePlusDetailles();
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.lt_tableau_detailles,fragmentTableauScorePlusDetailles)
-                .commit();*/
     }
 
 }

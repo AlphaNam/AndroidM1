@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="10.7"
-    tools:context=".FragmentTableauScorePlusDetailles">
+    tools:context=".vue.tabbed_statistics.FragmentTableauScorePlusDetailles">
 
     <LinearLayout
         android:id="@+id/layout_stat_general"

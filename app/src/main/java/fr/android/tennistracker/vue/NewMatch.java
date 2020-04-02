@@ -1,4 +1,4 @@
-package fr.android.tennistracker;
+package fr.android.tennistracker.vue;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,7 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.snackbar.Snackbar;
+import fr.android.tennistracker.R;
+import fr.android.tennistracker.vue.match.MatchActivity;
 
 public class NewMatch extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private EditText et_joueur1;
@@ -34,7 +35,6 @@ public class NewMatch extends AppCompatActivity implements AdapterView.OnItemSel
                     mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            // textview.setText(listItem[i]);
                             dialog.dismiss();
                         }
                     });
@@ -133,17 +133,8 @@ public class NewMatch extends AppCompatActivity implements AdapterView.OnItemSel
         ArrayAdapter<CharSequence> adapterTypeCoup = ArrayAdapter.createFromResource(this, R.array.type_coup, R.layout.support_simple_spinner_dropdown_item);
         adapterTypeCoup.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinnerTypeCoup.setAdapter(adapterTypeCoup);
+        spinnerTypeCoup.setOnItemSelectedListener(this);
 
-        spinnerTypeCoup.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.new_match);

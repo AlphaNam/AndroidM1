@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".vue.MainActivity">
 
     <!--android:layout_below="@id/toolbar"-->
 
@@ -35,14 +35,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:gravity="end|center_vertical"
+        android:layout_below="@id/button_new_match"
         android:layout_centerVertical="true"
         android:layout_marginLeft="150dp"
         android:layout_toRightOf="@id/image_view"
 
+        android:gravity="end|center_vertical"
+        android:onClick="launch_previous_match"
         android:text="@string/matchs_precedents"
         tools:layout_editor_absoluteX="119dp"
-        tools:layout_editor_absoluteY="619dp"
-        android:layout_below="@id/button_new_match"/>
+        tools:layout_editor_absoluteY="619dp" />
 
 </RelativeLayout>

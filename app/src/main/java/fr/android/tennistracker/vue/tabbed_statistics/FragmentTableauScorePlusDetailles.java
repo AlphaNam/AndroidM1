@@ -1,4 +1,4 @@
-package fr.android.tennistracker;
+package fr.android.tennistracker.vue.tabbed_statistics;
 
 import android.content.Context;
 import android.net.Uri;
@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.HashMap;
+
+import fr.android.tennistracker.R;
 
 
 public class FragmentTableauScorePlusDetailles extends Fragment {

@@ -9,13 +9,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import java.util.HashMap;
-
-import fr.android.tennistracker.Fragment1Statistiques;
-import fr.android.tennistracker.Fragment2Graphiques;
-import fr.android.tennistracker.Fragment3Hitorique;
+import fr.android.tennistracker.vue.tabbed_statistics.Fragment1Statistiques;
+import fr.android.tennistracker.vue.tabbed_statistics.Fragment2Graphiques;
+import fr.android.tennistracker.vue.tabbed_statistics.Fragment3Hitorique;
 import fr.android.tennistracker.R;
-import fr.android.tennistracker.ScoreDetailsActivity;
+import fr.android.tennistracker.vue.tabbed_statistics.ScoreDetailsActivity;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -60,7 +58,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        // Show 2 total pages.
         return 3;
     }
 }

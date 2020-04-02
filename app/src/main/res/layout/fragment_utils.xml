@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:weightSum="2"
-    tools:context=".FragmentUtils">
+    tools:context=".vue.matchDAO.FragmentUtils">
 
     <LinearLayout
         android:id="@+id/layout_localisation"

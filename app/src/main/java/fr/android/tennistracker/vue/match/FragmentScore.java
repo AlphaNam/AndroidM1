@@ -1,4 +1,4 @@
-package fr.android.tennistracker;
+package fr.android.tennistracker.vue.match;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,8 +16,11 @@ import android.widget.TextView;
 
 import java.util.HashMap;
 
+import fr.android.tennistracker.R;
 import fr.android.tennistracker.controleur.Controleur;
-import fr.android.tennistracker.modele.Match;
+import fr.android.tennistracker.modele.MatchDAO;
+
+import static fr.android.tennistracker.outils.Constantes.*;
 
 public class FragmentScore extends Fragment {
     private boolean finJeu;
@@ -38,21 +41,9 @@ public class FragmentScore extends Fragment {
     private boolean j1_sert;
     private boolean break_en_cours;
 
-    private static final String CHAINE_JEU_VALEUR_0 = "0";
-    private static final String CHAINE_JEU_VALEUR_15 = "15";
-    private static final String CHAINE_JEU_VALEUR_30 = "30";
-    private static final String CHAINE_JEU_VALEUR_40 = "40";
-    private static final String AVANTAGE = "AD";
-
-    private static final int JEU_VALEUR_0 = 0;
-    private static final int JEU_VALEUR_15 = 15;
-    private static final int JEU_VALEUR_30 = 30;
-    private static final int JEU_VALEUR_40 = 40;
-    private static final int JEU_VALEUR_AD = 50;
-
     private int nb_jeux_max;
     private boolean match_avantage;
-    private int tie_break; // == --nb_jeux_max
+    private int tie_break;
 
     private int score_jeu_actuel_j1;
     private int score_jeu_actuel_j2;
@@ -66,7 +57,7 @@ public class FragmentScore extends Fragment {
     private boolean match_gagne;
 
     private Controleur controleur;
-    private Match match;
+    private MatchDAO matchDAO;
 
     private int point_gagnes_j1, point_gagnes_j2;
 
@@ -125,24 +116,7 @@ public class FragmentScore extends Fragment {
         set_en_cours = 1;
         resetJeuActuel();
         resetSetActuel();
-        point_gagnes_j1 = 0;
-        point_gagnes_j2 = 0;
-        cptAceJ1 = 0;
-        cptAceJ2 = 0;
-        cptPointsGagnantJ1 = 0;
-        cptPointsGagnantJ2 = 0;
-        cptFauteProvoqueJ1 = 0;
-        cptFauteProvoqueJ2 = 0;
-        cptFauteDirecteJ1 = 0;
-        cptFauteDirecteJ2 = 0;
-        cptDoubleFauteJ1 = 0;
-        cptDoubleFauteJ2 = 0;
-        score_set1_j1 = 0;
-        score_set1_j2 = 0;
-        score_set2_j1 = -1;
-        score_set2_j2 = -1;
-        score_set3_j1 = -1;
-        score_set3_j2 = -1;
+        initInfosMatch();
 
         match_gagne = false;
     }
@@ -173,10 +147,6 @@ public class FragmentScore extends Fragment {
         return finJeu;
     }
 
-    public interface FragmentScoreListener{
-        void setServer(boolean joueur1_sert);
-    }
-
     public FragmentScore() {
         // Required empty public constructor
     }
@@ -189,11 +159,6 @@ public class FragmentScore extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        // GET INSTANCE DU CONTROLEUR
-        // oontrol = Controleur.getInstance();
-
-        // Inflate the layout for this fragment
 
         if(savedInstanceState != null){
             nomJoueur1 = savedInstanceState.getString("nom_joueur_1");
@@ -332,18 +297,11 @@ public class FragmentScore extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        /*if (context instanceof  FragmentScoreListener){
-            listener = (FragmentScoreListener)context;
-        } else {
-            throw new RuntimeException((context.toString())
-                    + "must implement FragmentScoreListener");
-        }*/
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        //listener = null;
     }
 
     public void resetJeu(){
@@ -634,14 +592,8 @@ public class FragmentScore extends Fragment {
         score_jeu_actuel_j1 = JEU_VALEUR_40;
     }
 
-    /**
-     * public void recupMatch(){
-     *     match = Control.match
-     * }
-     */
-
     public void recupMatch(){
-        match = Controleur.match;
+        matchDAO = Controleur.matchDAO;
     }
 
     public HashMap<String,String> getInfosMatch(){
@@ -673,5 +625,26 @@ public class FragmentScore extends Fragment {
         infosMatch.put("cpt_point_gagne_j2", Integer.toString(point_gagnes_j2));
 
         return infosMatch;
+    }
+
+    private void initInfosMatch(){
+        point_gagnes_j1 = 0;
+        point_gagnes_j2 = 0;
+        cptAceJ1 = 0;
+        cptAceJ2 = 0;
+        cptPointsGagnantJ1 = 0;
+        cptPointsGagnantJ2 = 0;
+        cptFauteProvoqueJ1 = 0;
+        cptFauteProvoqueJ2 = 0;
+        cptFauteDirecteJ1 = 0;
+        cptFauteDirecteJ2 = 0;
+        cptDoubleFauteJ1 = 0;
+        cptDoubleFauteJ2 = 0;
+        score_set1_j1 = 0;
+        score_set1_j2 = 0;
+        score_set2_j1 = -1;
+        score_set2_j2 = -1;
+        score_set3_j1 = -1;
+        score_set3_j2 = -1;
     }
 }

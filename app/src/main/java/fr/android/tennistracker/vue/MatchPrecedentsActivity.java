@@ -1,4 +1,4 @@
-package fr.android.tennistracker;
+package fr.android.tennistracker.vue;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+
+import fr.android.tennistracker.R;
 
 public class MatchPrecedentsActivity extends AppCompatActivity {
 
@@ -23,7 +25,7 @@ public class MatchPrecedentsActivity extends AppCompatActivity {
         matchPrecedents.add("Joueur 4 vs Joueur 5");
         matchPrecedents.add("Joueur 5 vs Joueur 6");
 
-        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.activity_match_precedents,matchPrecedents);
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1 ,matchPrecedents);
         matchPrecedentsListe.setAdapter(adapter);
     }
 }

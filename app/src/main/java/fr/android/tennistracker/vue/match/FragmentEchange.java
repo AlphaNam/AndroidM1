@@ -1,22 +1,20 @@
-package fr.android.tennistracker;
+package fr.android.tennistracker.vue.match;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
-public class FragmentService extends Fragment {
+import androidx.fragment.app.Fragment;
 
-    public FragmentService() {
+import fr.android.tennistracker.R;
+
+public class FragmentEchange extends Fragment {
+
+    public FragmentEchange() {
         // Required empty public constructor
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,24 +25,11 @@ public class FragmentService extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_service, container, false);
-
-        TextView tv_service = view.findViewById(R.id.tv_service);
-
-        Bundle bundle = getArguments();
-        if(bundle != null){
-            tv_service.setText("SERVICE: " + bundle.getString("serveur"));
-        }
-        return view;
+        return inflater.inflate(R.layout.fragment_echange, container, false);
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
     }
 }

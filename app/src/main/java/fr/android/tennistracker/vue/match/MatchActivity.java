@@ -1,4 +1,4 @@
-package fr.android.tennistracker;
+package fr.android.tennistracker.vue.match;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,7 +25,11 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class MatchActivity extends AppCompatActivity implements FragmentScore.FragmentScoreListener {
+import fr.android.tennistracker.R;
+import fr.android.tennistracker.vue.NewMatch;
+import fr.android.tennistracker.vue.tabbed_statistics.ScoreDetailsActivity;
+
+public class MatchActivity extends AppCompatActivity {//implements FragmentScore.FragmentScoreListener {
 
     public enum Evenement{
         ACE,
@@ -123,12 +127,6 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
 
 
         Bundle bundleFragScore = new Bundle();
-        Bundle bundleFragService = new Bundle();
-
-        if(j1_sert)
-            bundleFragService.putString("serveur",nomJoueur1);
-        else
-            bundleFragService.putString("serveur", nomJoueur2);
 
         bundleFragScore.putString("NOM_JOUEUR_1", nomJoueur1);
         bundleFragScore.putString("NOM_JOUEUR_2", nomJoueur2);
@@ -137,7 +135,6 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
         bundleFragScore.putInt("TIE_BREAK", tie_break);
 
         fragmentScore.setArguments(bundleFragScore);
-        fragmentService.setArguments(bundleFragService);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
@@ -148,7 +145,6 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
                 .commit();
     }
 
-    @Override
     public void setServer(boolean joueur1_sert) {
         fragmentScore.init_set1();
         fragmentScore.setServer(joueur1_sert);

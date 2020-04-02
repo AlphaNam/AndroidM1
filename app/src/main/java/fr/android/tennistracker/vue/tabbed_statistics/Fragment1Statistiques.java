@@ -1,4 +1,4 @@
-package fr.android.tennistracker;
+package fr.android.tennistracker.vue.tabbed_statistics;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import java.util.HashMap;
+
+import fr.android.tennistracker.R;
 
 public class Fragment1Statistiques extends Fragment {
     private TextView tv_joueur1;

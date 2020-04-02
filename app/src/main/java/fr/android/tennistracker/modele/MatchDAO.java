@@ -6,7 +6,7 @@ import org.json.JSONArray;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Match {
+public class MatchDAO {
 
     private int id_match;
     private String nomJoueur1, nomJoueur2;
@@ -24,7 +24,7 @@ public class Match {
     private String nom_vainqueur;
     private String dateMatch;
 
-    public Match(String nomJoueur1, String nomJoueur2, int ptsGagnesJ1, int ptsGagnesJ2, int premBallesJ1, int premBallesJ2, int ace_j1, int ace_j2, int double_faute_j1, int double_faute_j2, String balles_de_break_j1, String balles_de_break_j2, int pts_gagnes_premiere_balle_j1, int pts_gagnes_premiere_balle_j2, String balles_de_break_converties_j1, String balles_de_break_converties_j2, int pts_gagnes_deuxieme_balle_j1, int pts_gagnes_deuxieme_balle_j2, int pts_gagnants_j1, int pts_gagnants_j2, int fautes_dir_j1, int fautes_dir_j2, int fautes_provoq_j1, int fautes_provoq_j2, String nom_vainqueur) {
+    public MatchDAO(String nomJoueur1, String nomJoueur2, int ptsGagnesJ1, int ptsGagnesJ2, int premBallesJ1, int premBallesJ2, int ace_j1, int ace_j2, int double_faute_j1, int double_faute_j2, String balles_de_break_j1, String balles_de_break_j2, int pts_gagnes_premiere_balle_j1, int pts_gagnes_premiere_balle_j2, String balles_de_break_converties_j1, String balles_de_break_converties_j2, int pts_gagnes_deuxieme_balle_j1, int pts_gagnes_deuxieme_balle_j2, int pts_gagnants_j1, int pts_gagnants_j2, int fautes_dir_j1, int fautes_dir_j2, int fautes_provoq_j1, int fautes_provoq_j2, String nom_vainqueur) {
         this.nomJoueur1 = nomJoueur1;
         this.nomJoueur2 = nomJoueur2;
         this.ptsGagnesJ1 = ptsGagnesJ1;

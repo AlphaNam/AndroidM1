@@ -1,4 +1,4 @@
-package fr.android.tennistracker;
+package fr.android.tennistracker.vue.match;
 
 import android.Manifest;
 import android.content.Context;
@@ -18,6 +18,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import fr.android.tennistracker.R;
 
 public class FragmentUtils extends Fragment implements LocationListener {
     private TextView tv_latitude;
@@ -49,13 +51,6 @@ public class FragmentUtils extends Fragment implements LocationListener {
         Criteria criteria = new Criteria();
         provider = locationManager.getBestProvider(criteria, false);
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return view;
         }
         // PASSIVE PROVIDER ou provider
@@ -69,25 +64,14 @@ public class FragmentUtils extends Fragment implements LocationListener {
             tv_latitude.setText("Location not available");
             tv_longitude.setText("Location not available");
         }
-
-
-
-
         return view;
     }
 
-    /* Remove the locationlistener updates when Activity is paused */
+
     @Override
     public void onPause() {
         super.onPause();
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
         locationManager.removeUpdates(this);
@@ -103,8 +87,6 @@ public class FragmentUtils extends Fragment implements LocationListener {
 
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
-        // TODO Auto-generated method stub
-
     }
 
     @Override
