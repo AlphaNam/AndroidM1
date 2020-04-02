@@ -61,6 +61,7 @@ public class MatchActivity extends AppCompatActivity implements FragmentScore.Fr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match);
 
+
         final Intent intentBackNewMatch = new Intent(this, NewMatch.class);
 
         String nomJoueur1 = null;

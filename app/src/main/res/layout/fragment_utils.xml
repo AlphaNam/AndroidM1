@@ -72,8 +72,9 @@
 
         <Button
             android:id="@+id/button_camera"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
             android:background="@drawable/ic_linked_camera_black_24dp"
             android:onClick="dispatchTakePictureIntent" />
     </LinearLayout>

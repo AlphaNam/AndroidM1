@@ -136,8 +136,6 @@ public class NewMatch extends AppCompatActivity implements AdapterView.OnItemSel
         spinnerTypeCoup.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Snackbar.make(view, R.string.passer_version_pro, Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
             }
 
             @Override

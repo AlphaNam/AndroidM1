@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!--android:layout_below="@id/toolbar"-->
+
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="301dp"
+        android:layout_height="241dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/main_image_removebg_preview" />
+
+    <Button
+        android:id="@+id/button_new_match"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="end|center_vertical"
+        android:onClick="launch_new_match_form"
+        android:text="@string/nouveau_match"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/image_view"
+        android:layout_marginLeft="150dp"
+        tools:layout_editor_absoluteX="134dp"
+        tools:layout_editor_absoluteY="559dp"
+        android:layout_toEndOf="@id/image_view" />
+
+    <Button
+        android:id="@+id/button_last_matchs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:gravity="end|center_vertical"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="150dp"
+        android:layout_toRightOf="@id/image_view"
+
+        android:text="@string/matchs_precedents"
+        tools:layout_editor_absoluteX="119dp"
+        tools:layout_editor_absoluteY="619dp"
+        android:layout_below="@id/button_new_match"/>
+
+</RelativeLayout>
